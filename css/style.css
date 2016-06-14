@@ -1,0 +1,61 @@
+body.wp-admin {
+    display: inline-table;
+    min-width: 100%;
+}
+.aBMB .description {
+    display: block;
+    margin: 10px 0;
+}
+.aBMB .row {
+    padding: 10px;
+}
+.aBMB .row:nth-child(2n) {
+    background: #f7f7f7;
+}
+form.aBForm textarea {
+    width: 50%;
+    display: inline-block;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #DDDDDD;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+form.abForm label.description {
+    font-weight: 200;
+    padding: 10px 0;
+    display: block;
+    font-weight: 200;
+}
+form.abForm p.pageDescription {
+    margin-bottom: 30px;
+}
+form.abForm label.description {
+    display: block;
+}
+form.abForm img.uploadImage, .aBMB img.uploadImage {
+    min-width: 0px;
+    min-height: 0px;
+    max-width: 100px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    border: 1px solid #6b6b6b;
+    background-color: #e7e7e7;
+}
+.white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 20px;
+    width: auto;
+    max-width: 500px;
+    margin: 20px auto;
+}
