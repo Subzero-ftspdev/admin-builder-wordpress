@@ -12,7 +12,6 @@ require_once 'abCPages.php';
 // sidebars functionality
 require_once 'abSidebars.php';
 //widgets functionality
-require_once 'abWidgets.php';
 //
 //
 // Initializing the functionality
@@ -37,8 +36,8 @@ require_once 'abWidgets.php';
             //custom sidebars
             new abSidebars($dataArr);
             // custom widgets Class
-            new abWidgets($dataArr);
         }
     }
 $abGen = new GeneralFunctionality();
+
 $abGen->general_initialize();
