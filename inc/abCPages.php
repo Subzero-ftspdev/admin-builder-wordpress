@@ -1,8 +1,8 @@
 <?php
-
-class aBcPagesClass
-{
-    /**
+if (!class_exists('aBcPagesClass')) {
+    class aBcPagesClass
+    {
+        /**
    * Holds the values to be used in the fields callbacks.
    */
   private $generalArr;
@@ -35,11 +35,11 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
           }
       }
   }
-    public function saveArrayFields($hidden_field_name, $hidden_field_value)
-    {
-        if (empty($_POST)) {
-            return false;
-        }
+        public function saveArrayFields($hidden_field_name, $hidden_field_value)
+        {
+            if (empty($_POST)) {
+                return false;
+            }
     // See if the user has posted us some information
     // If they did, this hidden field will be set to 'Y'
     if (isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == $hidden_field_value) {
@@ -60,13 +60,13 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
 <?php
 
     }
-    }
-    public function loadcPage($hidden_field_name)
-    {
-        $stringValues = get_option($hidden_field_name);
+        }
+        public function loadcPage($hidden_field_name)
+        {
+            $stringValues = get_option($hidden_field_name);
 
-        return unserialize($stringValues);
-    }
+            return unserialize($stringValues);
+        }
   // Admin Menu callback function
     public function ab_toplevel_page()
     {
@@ -194,5 +194,6 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
 </form>
         <?php
 
+    }
     }
 }

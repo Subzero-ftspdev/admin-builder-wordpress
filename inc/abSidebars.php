@@ -1,8 +1,9 @@
 <?php
 
-class abSidebars
-{
-    /**
+if (!class_exists('abSidebars')) {
+    class abSidebars
+    {
+        /**
      * Holds the values to be used in the fields callbacks.
      */
     private $generalArr;
@@ -16,13 +17,12 @@ class abSidebars
 
         add_action('widgets_init', array($this, 'abRegisterSidebars'));
     }
-    public function abRegisterSidebars()
-    {
-
-        $generalArr = $this->generalArr;
-        if (isset($generalArr->menus)) {
-            foreach ($generalArr->menus as $l1Key => $sidebars) {
-                // if we're dealing with a sidebar
+        public function abRegisterSidebars()
+        {
+            $generalArr = $this->generalArr;
+            if (isset($generalArr->menus)) {
+                foreach ($generalArr->menus as $l1Key => $sidebars) {
+                    // if we're dealing with a sidebar
           if (isset($sidebars->type) && $sidebars->type == 'sidebars') {
               // if the sidebar menu item is not empty
             if (!empty($sidebars->children)) {
@@ -47,6 +47,7 @@ class abSidebars
               }
             }
           }
+                }
             }
         }
     }

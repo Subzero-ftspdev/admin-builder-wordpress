@@ -17,27 +17,27 @@ require_once 'abSidebars.php';
 // Initializing the functionality
 //
 //
+if(!class_exists('loadFromPlugin')){
+  class loadFromPlugin
+  {
+      public function load($dataArr)
+      {
+        global $gDataArr ;
+          $data = stripslashes($dataArr);
 
-    class loadFromPlugin
-    {
-        public function load($dataArr)
-        {
-          global $gDataArr ;
-            $data = stripslashes($dataArr);
-
-            $dataArr = json_decode($data);
-            $gDataArr = $dataArr;
-            // meta boxes functionality
-            new aBMetaClass($dataArr);
-            // custom post types
-            new aBCPTClass($dataArr);
-            //custom page class
-            new aBcPagesClass($dataArr);
-            //custom sidebars
-            new abSidebars($dataArr);
-            // custom widgets Class
-        }
-    }
+          $dataArr = json_decode($data);
+          $gDataArr = $dataArr;
+          // meta boxes functionality
+          new aBMetaClass($dataArr);
+          // custom post types
+          new aBCPTClass($dataArr);
+          //custom page class
+          new aBcPagesClass($dataArr);
+          //custom sidebars
+          new abSidebars($dataArr);
+          // custom widgets Class
+      }
+  }
+}
 $abGen = new GeneralFunctionality();
-
 $abGen->general_initialize();
