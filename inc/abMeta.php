@@ -1,7 +1,8 @@
 <?php
-class aBMetaClass
-{
-    /**
+if (!class_exists('aBMetaClass')) {
+    class aBMetaClass
+    {
+        /**
      * Holds the values to be used in the fields callbacks.
      */
     private $metaBoxesArr;
@@ -23,14 +24,14 @@ class aBMetaClass
         }
     }
 
-    private function processArray($data)
-    {
-        //
+        private function processArray($data)
+        {
+            //
         // Declaring a brand new array outside the loop
         //
         $newArr = array();
-        foreach ($data->menus as $key => $value) {
-            // $aBGeneral->showArr($value);
+            foreach ($data->menus as $key => $value) {
+                // $aBGeneral->showArr($value);
             foreach ($value->children as $key2 => $value2) {
                 //set the type from array
                 $type = $value->type;
@@ -61,47 +62,47 @@ class aBMetaClass
                     'priority' => $priority,
                 );
             }
+            }
+
+            return $newArr;
         }
 
-        return $newArr;
-    }
-
-    public function abAddMetaBox()
-    {
-        $metaArr = $this->gametaboxesArr;
+        public function abAddMetaBox()
+        {
+            $metaArr = $this->gametaboxesArr;
         // $aBGeneral = new GeneralFunctionality();
         // $aBGeneral->showArr($metaArr);
 
         $id = 'aB_';
-        $title = 'Default Title';
-        $callback = array($this, 'meta_callback_function');
-        $context = 'advanced';
-        $priority = 'default';
-        $callback_args = null;
-        if (!empty($metaArr)) {
-            foreach ($metaArr as $count => $box) {
-                $type = $box['type'] ? $box['type'] : 'post';
-                $cpt_name = 'post';
-                if ($type === 'cpt' && isset($box['cpt_name'])) {
-                    $cpt_name = $box['cpt_name'];
-                } else {
-                    $cpt_name = $box['type'];
-                }
-                $context = $box['context'] ? $box['context'] : $context;
-                $priority = $box['priority'] ? $box['priority'] : $priority;
-                $id .= $count;
-                if (isset($box['label'])) {
-                    $title = $box['label'] ? $box['label'] : $title;
-                }
-                if (isset($box['priority'])) {
-                    $priority = $box['priority'] ? $box['priority'] : 'default';
-                }
+            $title = 'Default Title';
+            $callback = array($this, 'meta_callback_function');
+            $context = 'advanced';
+            $priority = 'default';
+            $callback_args = null;
+            if (!empty($metaArr)) {
+                foreach ($metaArr as $count => $box) {
+                    $type = $box['type'] ? $box['type'] : 'post';
+                    $cpt_name = 'post';
+                    if ($type === 'cpt' && isset($box['cpt_name'])) {
+                        $cpt_name = $box['cpt_name'];
+                    } else {
+                        $cpt_name = $box['type'];
+                    }
+                    $context = $box['context'] ? $box['context'] : $context;
+                    $priority = $box['priority'] ? $box['priority'] : $priority;
+                    $id .= $count;
+                    if (isset($box['label'])) {
+                        $title = $box['label'] ? $box['label'] : $title;
+                    }
+                    if (isset($box['priority'])) {
+                        $priority = $box['priority'] ? $box['priority'] : 'default';
+                    }
 
-                $callback_args = $box['callbackArgs'] ? array('name' => $box['name'], 'fields' => $box['fields']) : null;
-                add_meta_box($id, $title, array($this, 'meta_callback_function'), $cpt_name, $context, $priority, $callback_args);
+                    $callback_args = $box['callbackArgs'] ? array('name' => $box['name'], 'fields' => $box['fields']) : null;
+                    add_meta_box($id, $title, array($this, 'meta_callback_function'), $cpt_name, $context, $priority, $callback_args);
+                }
             }
         }
-    }
 
     // save meta callback function on post (post/page/cpt) admin page submit/
     public function save_metaBox_fields($post_id, $post)
@@ -139,15 +140,12 @@ class aBMetaClass
                 /* Get the meta value of the custom field key. */
                 $meta_value = get_post_meta($post_id, $meta_key, true);
 
-
-
                 /* If a new meta value was added and there was no previous value, add it. */
-                if ($new_meta_value!='' && '' == $meta_value) {
+                if ($new_meta_value != '' && '' == $meta_value) {
                     add_post_meta($post_id, $meta_key, $new_meta_value);
                 } /* If the new meta value does not match the old value, update it. */
                 elseif ($new_meta_value !== $meta_value) {
                     update_post_meta($post_id, $meta_key, $new_meta_value);
-
                 } /* If there is no new meta value but an old value exists, delete it. */
                 elseif ('' == $new_meta_value && $meta_value) {
                     delete_post_meta($post_id, $meta_key, $meta_value);
@@ -162,28 +160,29 @@ class aBMetaClass
         }
     }
 
-    public function meta_callback_function($post, $args)
-    {
-        ?>
+        public function meta_callback_function($post, $args)
+        {
+            ?>
         <div class="container-fluid aBMB">
             <?php wp_nonce_field(basename(__FILE__), 'aB_nounce_'.$args['args']['name']);
-        foreach ($args['args']['fields'] as $field => $val) {
-            $this->generate_field($val, $args['args'], $post);
-        }
-        ?>
+            foreach ($args['args']['fields'] as $field => $val) {
+                $this->generate_field($val, $args['args'], $post);
+            }
+            ?>
         </div>
         <?php
 
-    }
+        }
 
-    private function generate_field($field, $metabox, $post)
-    {
-        $fieldsC = new fieldsC();
-        $args = array($field, $metabox, $post);
-        $fieldsC->addMeta_field($args);
-    }
+        private function generate_field($field, $metabox, $post)
+        {
+            $fieldsC = new fieldsC();
+            $args = array($field, $metabox, $post);
+            $fieldsC->addMeta_field($args);
+        }
 
-    private function add_meta_fields($fieldsArr)
-    {
+        private function add_meta_fields($fieldsArr)
+        {
+        }
     }
 }

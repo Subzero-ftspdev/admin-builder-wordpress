@@ -1,8 +1,8 @@
 <?php
-
-class aBcPagesClass
-{
-    /**
+if (!class_exists('aBcPagesClass')) {
+    class aBcPagesClass
+    {
+        /**
    * Holds the values to be used in the fields callbacks.
    */
   private $generalArr;
@@ -21,27 +21,29 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
   public function mt_add_pages()
   {
       $generalArr = $this->generalArr;
-      foreach ($generalArr->menus as $key => $value) {
-          if ($value->type === 'cPage') {
-              $handler = (isset($value->handler)) ? $value->handler : 'top_level_handle';
-              $capability = (isset($value->capability)) ? $value->capability : 'manage_options';
-              $pageTitle = (isset($value->pageTitle)) ? $value->pageTitle : 'Default Custom page title';
-              $position = (isset($value->position)) ? $value->position : null;
-              $icon_url = (isset($value->icon_url)) ? $value->icon_url : '';
+      if (isset($generalArr->menus)) {
+          foreach ($generalArr->menus as $key => $value) {
+              if ($value->type === 'cPage') {
+                  $handler = (isset($value->handler)) ? $value->handler : 'top_level_handle';
+                  $capability = (isset($value->capability)) ? $value->capability : 'manage_options';
+                  $pageTitle = (isset($value->pageTitle)) ? $value->pageTitle : 'Default Custom page title';
+                  $position = (isset($value->position)) ? $value->position : null;
+                  $icon_url = (isset($value->icon_url)) ? $value->icon_url : '';
 
-              add_menu_page($pageTitle, $value->label, $capability, $handler, array($this, 'ab_toplevel_page'), $icon_url, $position);
+                  add_menu_page($pageTitle, $value->label, $capability, $handler, array($this, 'ab_toplevel_page'), $icon_url, $position);
+              }
           }
       }
   }
-    public function saveArrayFields($hidden_field_name, $hidden_field_value)
-    {
-        if (empty($_POST)) {
-            return false;
-        }
+        public function saveArrayFields($hidden_field_name, $hidden_field_value)
+        {
+            if (empty($_POST)) {
+                return false;
+            }
     // See if the user has posted us some information
     // If they did, this hidden field will be set to 'Y'
     if (isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == $hidden_field_value) {
-      $fullPostString = '';
+        $fullPostString = '';
         // Read their posted value
         if (isset($_POST['cPage'])) {
             $fullPostString = serialize($_POST['cPage']);
@@ -58,13 +60,13 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
 <?php
 
     }
-    }
-    public function loadcPage($hidden_field_name)
-    {
-        $stringValues = get_option($hidden_field_name);
+        }
+        public function loadcPage($hidden_field_name)
+        {
+            $stringValues = get_option($hidden_field_name);
 
-        return unserialize($stringValues);
-    }
+            return unserialize($stringValues);
+        }
   // Admin Menu callback function
     public function ab_toplevel_page()
     {
@@ -192,5 +194,6 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
 </form>
         <?php
 
+    }
     }
 }
