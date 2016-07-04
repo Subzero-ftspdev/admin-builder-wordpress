@@ -21,18 +21,22 @@ if (!class_exists('GeneralFunctionality')) {
             if (isset($dataArrAll) && !empty($dataArrAll)) {
                 foreach ($dataArrAll as $dataArr) {
                     //version
-                    $dataArr = $dataArr['sett'];
-                    $data = stripslashes($dataArr);
-                    $dataArr = json_decode($data);
+                    $dataArrSettings = $dataArr['sett'];
+
+                    $data = stripslashes($dataArrSettings);
+                    $dataArrSettings = json_decode($dataArrSettings);
+                    $dataArrSettings = json_decode($dataArrSettings);
+                    // $this->showArr($dataArrSettings);
+
                   # code...
                   // meta boxes functionality
-                  new aBMetaClass($dataArr);
+                  new aBMetaClass($dataArrSettings);
                   // custom post types
-                  new aBCPTClass($dataArr);
+                  new aBCPTClass($dataArrSettings);
                   //custom page class
-                  new aBcPagesClass($dataArr);
+                  new aBcPagesClass($dataArrSettings);
                   //custom sidebars
-                  new abSidebars($dataArr);
+                  new abSidebars($dataArrSettings);
                   // custom widgets Class
                 }
             }
