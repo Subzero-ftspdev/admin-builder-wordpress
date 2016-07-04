@@ -10,8 +10,6 @@ if (!class_exists('GeneralFunctionality')) {
         }
         public function loadEverything()
         {
-            // echo 'allright';
-            // exit;
           //load from database entire string
 
           $dataArrAll = get_option('abAllArr');
@@ -20,12 +18,16 @@ if (!class_exists('GeneralFunctionality')) {
             // if we have data in the database, cycle trough it
             if (isset($dataArrAll) && !empty($dataArrAll)) {
                 foreach ($dataArrAll as $dataArr) {
+
                     //version
                     $dataArrSettings = $dataArr['sett'];
 
-                    $data = stripslashes($dataArrSettings);
-                    $dataArrSettings = json_decode($dataArrSettings);
-                    $dataArrSettings = json_decode($dataArrSettings);
+
+
+                    $data = substr(stripslashes($dataArrSettings),1);
+                    $data = substr(stripslashes($dataArrSettings),1,strlen($data)-1);
+                    $dataArrSettings = json_decode($data);
+
                     // $this->showArr($dataArrSettings);
 
                   # code...

@@ -61,7 +61,7 @@ if (!class_exists('aBMetaClass')) {
                     'context' => $context,
                     'priority' => $priority,
                 );
-            }
+              }
             }
 
             return $newArr;
@@ -75,12 +75,12 @@ if (!class_exists('aBMetaClass')) {
 
         $id = 'aB_';
             $title = 'Default Title';
-            $callback = array($this, 'meta_callback_function');
             $context = 'advanced';
             $priority = 'default';
             $callback_args = null;
             if (!empty($metaArr)) {
                 foreach ($metaArr as $count => $box) {
+                  $name = $box['name'] ? $box['name'] : 'defName';
                     $type = $box['type'] ? $box['type'] : 'post';
                     $cpt_name = 'post';
                     if ($type === 'cpt' && isset($box['cpt_name'])) {
@@ -90,7 +90,7 @@ if (!class_exists('aBMetaClass')) {
                     }
                     $context = $box['context'] ? $box['context'] : $context;
                     $priority = $box['priority'] ? $box['priority'] : $priority;
-                    $id .= $count;
+                    $id .= $name.$count;
                     if (isset($box['label'])) {
                         $title = $box['label'] ? $box['label'] : $title;
                     }
