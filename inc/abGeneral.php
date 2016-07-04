@@ -7,7 +7,6 @@ if (!class_exists('GeneralFunctionality')) {
             // Hook for adding admin menus
             add_action('admin_footer', array($this, 'ab_admin_footer_function'));
             $this->loadEverything();
-
         }
         public function loadEverything()
         {
@@ -40,9 +39,32 @@ if (!class_exists('GeneralFunctionality')) {
             //load loop END
         }
         //load new version into database
-        public function loadNew($jsonString){
-          $dataArr = get_option('abAllArr');
+        public function loadNew($jsonString,$settData)
+        {
+          $sVersion =  (isset($settData['Version'])) ? $settData['Version']:'1.0';
+          $sName = (isset($settData['Version'])) ? $settData['Name'] : 'No Name';
 
+            $dataArr = get_option('abAllArr');
+            // loop trough all the settings
+            foreach ($$dataArr as $item => $val) {
+              // check if name and version is up to date in the db
+              if($item['ver'] != $sVersion && $item['name'] == $sName)
+              {
+                $item['ver'] = $sVersion;
+                $item['sett'] = $jsonString;
+              }
+            }
+          // add_action('admin_init',array($this,'admin_init'));
+          //
+
+
+        }
+
+
+        public function admin_init()
+        {
+            print_r(get_plugin_data(__FILE__));
+            exit;
         }
 
         public function ab_admin_footer_function()
