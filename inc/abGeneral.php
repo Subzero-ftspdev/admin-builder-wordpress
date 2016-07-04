@@ -14,13 +14,14 @@ if (!class_exists('GeneralFunctionality')) {
             // exit;
           //load from database entire string
 
-          $dataArr = get_option('abAllArr');
+          $dataArrAll = get_option('abAllArr');
+            $dataArrAll = unserialize($dataArrAll);
             //load loop START
             // if we have data in the database, cycle trough it
-            if (isset($dataArr) && !empty($dataArr)) {
+            if (isset($dataArrAll) && !empty($dataArrAll)) {
                 foreach ($dataArrAll as $dataArr) {
                     //version
-                    $dataArr = $dataArr['sArr'];
+                    $dataArr = $dataArr['sett'];
                     $data = stripslashes($dataArr);
                     $dataArr = json_decode($data);
                   # code...
@@ -39,27 +40,54 @@ if (!class_exists('GeneralFunctionality')) {
             //load loop END
         }
         //load new version into database
-        public function loadNew($jsonString,$settData)
+        public function loadNew($jsonString, $settData)
         {
-          $sVersion =  (isset($settData['Version'])) ? $settData['Version']:'1.0';
-          $sName = (isset($settData['Version'])) ? $settData['Name'] : 'No Name';
+            $sVersion = (isset($settData['Version'])) ? $settData['Version'] : '1.0';
+            $sName = (isset($settData['Version'])) ? $settData['Name'] : 'No Name';
 
             $dataArr = get_option('abAllArr');
+            $dataArr = unserialize($dataArr);
             // loop trough all the settings
-            foreach ($$dataArr as $item => $val) {
-              // check if name and version is up to date in the db
-              if($item['ver'] != $sVersion && $item['name'] == $sName)
-              {
-                $item['ver'] = $sVersion;
-                $item['sett'] = $jsonString;
-              }
+            $update = false;
+            $exists = false; // the settings are entirely new?
+            $newArr = array();
+            if (!empty($dataArr) && is_array($dataArr)) {
+                foreach ($dataArr as $item) {
+                    if ($item['name'] == $sName) {
+                        $exists = true;
+                    }
+                // check if name and version is up to date in the db
+                if ($item['ver'] != $sVersion && $item['name'] == $sName) {
+                    $item['ver'] = $sVersion;
+                    $item['sett'] = $jsonString;
+                    $update = true;
+                }
+
+                    $newArr[] = $item;
+                }
+                if (!$update && !$exists) {
+                    $newArr[] = array(
+                  'ver' => $sVersion,
+                  'name' => $sName,
+                  'sett' => $jsonString,
+                );
+                    $update = true;
+                }
             }
-          // add_action('admin_init',array($this,'admin_init'));
-          //
 
+            if (empty($dataArr)) {
+                $newArr[0]['ver'] = $sVersion;
+                $newArr[0]['name'] = $sName;
+                $newArr[0]['sett'] = $jsonString;
+                $update = true;
+            }
 
+//update with the new version if the case
+            if ($update) {
+                $newArr = serialize($newArr);
+                update_option('abAllArr', $newArr);
+            }
         }
-
 
         public function admin_init()
         {
