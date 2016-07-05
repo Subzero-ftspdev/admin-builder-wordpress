@@ -21,11 +21,7 @@ if (!class_exists('GeneralFunctionality')) {
 
                     //version
                     $dataArrSettings = $dataArr['sett'];
-
-
-
-                    $data = substr(stripslashes($dataArrSettings),1);
-                    $data = substr(stripslashes($dataArrSettings),1,strlen($data)-1);
+                    $data = stripslashes($dataArrSettings);
                     $dataArrSettings = json_decode($data);
 
                     // $this->showArr($dataArrSettings);
