@@ -241,21 +241,21 @@ if (!class_exists('fieldsC')) {
           }
           $fieldHTML .= '</div>';
           $fieldHTML .= '</div>';
-          // $sGeneral->showArr($oArr);
 
           $imgAlt = '';
-          if (!empty($fieldValue)) {
-            //$fieldValue
-          }else{
-            $fieldHTML .= '<p>No rows exist. Please add some</p>';
-
-          }
           $fieldHTML .= '<div class="tdOutput">';
-          $fieldHTML .= '<div class="groupContainer">';
-          foreach ($oArr as $key) {
-            $fieldHTML .= $this->dtGenerate($key->label,$fieldName.$key->value,'');
+          if(is_array($fieldValue)){
+            $sGeneral->showArr($fieldValue);
+
+            foreach ($fieldValue as $fv) {
+              $fieldHTML .= '<div class="groupContainer">';
+              foreach ($fv as $key) {
+                $fieldHTML .= $this->dtGenerate($key->label,$fieldName.$key->value,'');
+              }
+              $fieldHTML .= '</div>';
+            }
           }
-          $fieldHTML .= '</div>';
+
           $fieldHTML .= '</div>';
           $fieldHTML .= '<p><button type="button" class="tbdAdd btn btn-primary">Add Row</button><br/></p>';
           break;
