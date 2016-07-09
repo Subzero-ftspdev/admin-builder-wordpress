@@ -237,10 +237,7 @@ if (!class_exists('fieldsC')) {
           $fieldHTML .= '<div class="hidden tbdContent">';
           $fieldHTML .= '<div class="groupContainer">';
           foreach ($oArr as $key) {
-            $fieldHTML .= '<div class="form-group">';
-            $fieldHTML .= '<label for="exampleInputEmail1">'.$key->label.'</label>';
-            $fieldHTML .= '<input type="text" name="'.$fieldName.$key->value.'[]" class="form-control" id="'.$fieldName.$key->value.'" placeholder="Please enter '.$key->label.'">';
-            $fieldHTML .= '</div>';
+            $fieldHTML .= $this->dtGenerate($key->label,$fieldName.$key->value,'');
           }
           $fieldHTML .= '</div>';
           $fieldHTML .= '</div>';
@@ -253,7 +250,13 @@ if (!class_exists('fieldsC')) {
             $fieldHTML .= '<p>No rows exist. Please add some</p>';
 
           }
-          $fieldHTML .= '<div class="tdOutput"></div>';
+          $fieldHTML .= '<div class="tdOutput">';
+          $fieldHTML .= '<div class="groupContainer">';
+          foreach ($oArr as $key) {
+            $fieldHTML .= $this->dtGenerate($key->label,$fieldName.$key->value,'');
+          }
+          $fieldHTML .= '</div>';
+          $fieldHTML .= '</div>';
           $fieldHTML .= '<p><button type="button" class="tbdAdd btn btn-primary">Add Row</button><br/></p>';
           break;
         }
@@ -272,6 +275,14 @@ if (!class_exists('fieldsC')) {
         </div>
         <?php
 
+      }
+      //dynamic textbox generate
+      private function dtGenerate($label,$name,$value){
+        $fieldHTML = '<div class="form-group">';
+        $fieldHTML .= '<label for="'.$name.'">'.$label.'</label>';
+        $fieldHTML .= '<input type="text" name="'.$name.'[]" class="form-control" id="'.$name.'" placeholder="Please enter '.$label.'">';
+        $fieldHTML .= '</div>';
+        return $fieldHTML;
       }
     }
 }
