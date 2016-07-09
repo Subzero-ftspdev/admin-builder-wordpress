@@ -234,7 +234,7 @@ if (!class_exists('fieldsC')) {
           break;
           case 'textboxesDynamic':
           $oArr = (isset($field['oArr']))?$field['oArr']:array();
-          $fieldHTML .= '<div class=" tbDynamic">';
+          $fieldHTML .= '<div class="hidden tbDynamic">';
           foreach ($oArr as $key) {
             $fieldHTML .= '<div class="form-group">';
             $fieldHTML .= '<label for="exampleInputEmail1">'.$key->label.'</label>';
@@ -247,11 +247,11 @@ if (!class_exists('fieldsC')) {
           $imgAlt = '';
           if (!empty($fieldValue)) {
             //$fieldValue
-            $fieldHTML .= '<button class="tbDynamic">Add Row</button><br/><br/>';
           }else{
-            $fieldHTML .= 'No rows to add';
+            $fieldHTML .= '<p>No rows exist. Please add some</p>';
 
           }
+          $fieldHTML .= '<p><button class="tbDynamic">Add Row</button><br/></p>';
           break;
         }
           ?>
