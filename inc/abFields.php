@@ -234,7 +234,15 @@ if (!class_exists('fieldsC')) {
           break;
           case 'textboxesDynamic':
           $oArr = (isset($field['oArr']))?$field['oArr']:array();
-          $sGeneral->showArr($oArr);
+          $fieldHTML .= '<div class=" tbDynamic">';
+          foreach ($oArr as $key) {
+            $fieldHTML .= '<div class="form-group">';
+            $fieldHTML .= '<label for="exampleInputEmail1">'.$key->label.'</label>';
+            $fieldHTML .= '<input type="text" name="'.$fieldName.$key->value.'[]" class="form-control" id="'.$fieldName.$key->value.'" placeholder="Please enter '.$key->label.'">';
+            $fieldHTML .= '</div>';
+          }
+          $fieldHTML .= '</div>';
+          // $sGeneral->showArr($oArr);
 
           $imgAlt = '';
           if (!empty($fieldValue)) {
