@@ -21,11 +21,10 @@ if (!class_exists('GeneralFunctionality')) {
 
                     //version
                     $dataArrSettings = $dataArr['sett'];
+
                     $data = stripslashes($dataArrSettings);
                     $dataArrSettings = json_decode($data);
-
                     // $this->showArr($dataArrSettings);
-
                   # code...
                   // meta boxes functionality
                   new aBMetaClass($dataArrSettings);

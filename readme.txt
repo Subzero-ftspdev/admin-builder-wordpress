@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: meta, fields, auto, easy, fast, develop, developers, RAD, build, code, unlimited, service, field
 Requires at least: 4.0
 Tested up to: 4.5
-Stable tag: 1.0.4
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -149,6 +149,10 @@ Nothing affected from the previous version
 
  = 1.0.4 =
   Added database loading/generating functionality - everything works differently now. Things must be exported from service and re-imported according to the new rules.
+
+  = 1.1 =
+  Interpreting new export functionality for themes and plugins, integrated into the plugin.
+
 == Arbitrary section ==
 
 The plugin does not need any extra method of configuration/installation or any other information

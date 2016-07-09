@@ -6,6 +6,7 @@ if (!class_exists('fieldsC')) {
       public function addMeta_field($args, $fType = '', $allValues = array(), $pageName = '')
       {
           $sGeneral = new GeneralFunctionality();
+
           switch ($fType) {
         case 'cPage':
           $args = (array) $args;
@@ -230,6 +231,19 @@ if (!class_exists('fieldsC')) {
           }
           $fieldHTML .= '<button type="button" class="abBootstrapIcons">'.$buttonString.'</button><br/><br/>';
           $fieldHTML .= '<input type="hidden" class="abBIHidden" name="'.$fieldName.'" value="'.$fieldValue.'" />';
+          break;
+          case 'textboxesDynamic':
+          $oArr = (isset($field['oArr']))?$field['oArr']:array();
+          $sGeneral->showArr($oArr);
+
+          $imgAlt = '';
+          if (!empty($fieldValue)) {
+            //$fieldValue
+            $fieldHTML .= '<button class="tbDynamic">Add Row</button><br/><br/>';
+          }else{
+            $fieldHTML .= 'No rows to add';
+
+          }
           break;
         }
           ?>
