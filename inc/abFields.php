@@ -234,13 +234,15 @@ if (!class_exists('fieldsC')) {
           break;
           case 'textboxesDynamic':
           $oArr = (isset($field['oArr']))?$field['oArr']:array();
-          $fieldHTML .= '<div class="hidden tbDynamic">';
+          $fieldHTML .= '<div class="hidden tbdContent">';
+          $fieldHTML .= '<div class="groupContainer">';
           foreach ($oArr as $key) {
             $fieldHTML .= '<div class="form-group">';
             $fieldHTML .= '<label for="exampleInputEmail1">'.$key->label.'</label>';
             $fieldHTML .= '<input type="text" name="'.$fieldName.$key->value.'[]" class="form-control" id="'.$fieldName.$key->value.'" placeholder="Please enter '.$key->label.'">';
             $fieldHTML .= '</div>';
           }
+          $fieldHTML .= '</div>';
           $fieldHTML .= '</div>';
           // $sGeneral->showArr($oArr);
 
@@ -251,7 +253,8 @@ if (!class_exists('fieldsC')) {
             $fieldHTML .= '<p>No rows exist. Please add some</p>';
 
           }
-          $fieldHTML .= '<p><button class="tbDynamic">Add Row</button><br/></p>';
+          $fieldHTML .= '<div class="tdOutput"></div>';
+          $fieldHTML .= '<p><button type="button" class="tbdAdd btn btn-primary">Add Row</button><br/></p>';
           break;
         }
           ?>

@@ -103,4 +103,15 @@ jQuery(document).ready(function($) {
       });
     }
 
+    // textboxesDynamic functionality START
+    var tbdAdd = $('.tbdAdd'); //add row button
+    if(tbdAdd[0]){
+      tbdAdd.click(function(){
+        var tbdContent = $(this).parent().siblings('.tbdContent');
+        var tdOutput = $(this).parent().siblings('.tdOutput');
+        tbdContentHTML = tbdContent.html();
+        tdOutput.html(tdOutput.html()+tbdContentHTML);
+      });
+    }
+
 });

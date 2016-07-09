@@ -59,3 +59,8 @@ form.abForm img.uploadImage, .aBMB img.uploadImage {
     max-width: 500px;
     margin: 20px auto;
 }
+.groupContainer{
+  margin:20px 0;
+  padding:20px;
+  background:#d7d7d7;
+}
