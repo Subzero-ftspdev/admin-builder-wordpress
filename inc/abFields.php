@@ -238,7 +238,7 @@ if (!class_exists('fieldsC')) {
           $oArr = (isset($field['oArr']))?$field['oArr']:array();
           $fieldHTML .= '<div class="hidden tbdContent">';
           $fieldHTML .= '<div class="groupContainer">';
-          $fieldHTML .= '<button type="button" class="btn btn-primary dtClose">X</button>';
+          $fieldHTML .= '<button type="button" class="btn btn-primary close">X</button>';
           foreach ($oArr as $key) {
             $fieldHTML .= $this->dtGenerate($key->label,$fieldName,null,null,$key->value);
           }
@@ -255,7 +255,7 @@ if (!class_exists('fieldsC')) {
 
             foreach ($fieldValue as $fv) {
               $fieldHTML .= '<div class="groupContainer">';
-              $fieldHTML .= '<button type="button" class="btn btn-primary dtClose">X</button>';
+              $fieldHTML .= '<button type="button" class="btn btn-primary close">X</button>';
               foreach ($oArr as $key=>$val) {
                 $fieldValue = (isset($fv[$val->value]))?$fv[$val->value]:'';
                 $fieldHTML .= $this->dtGenerate($val->label,$fieldName,$fv[$val->value],$i,$val->value);

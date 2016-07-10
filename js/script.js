@@ -135,7 +135,7 @@ jQuery(document).ready(function($) {
       });
     }
     // close button for dynamic fields containers
-    var dtClose = $('.groupContainer button.dtClose');
+    var dtClose = $('.groupContainer button.close');
     if(dtClose[0]){
       dtClose.live('click',function(){
         $(this).parent().remove();

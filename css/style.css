@@ -73,9 +73,11 @@ button.close{
   float:right;
   margin:5px;
   font-size: 18px;
+  color:#9e1c1c;
+  opacity: 1;
 }
 button.close:hover{
-  background: rgb(25, 49, 59);
+  background: #9e1c1c;;
   opacity: 1;
   padding:5px;
   color:#FFF;
