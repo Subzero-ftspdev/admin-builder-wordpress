@@ -244,19 +244,18 @@ if (!class_exists('fieldsC')) {
 
           $imgAlt = '';
           $fieldHTML .= '<div class="tdOutput">';
+          $i=0;
           if(is_array($fieldValue)){
             // $sGeneral->showArr($fieldValue);
           //
-          //   foreach ($fieldValue as $fv) {
-          //     $fieldHTML .= '<div class="groupContainer">';
-          //     foreach ($oArr as $key) {
-          //       $fieldHTML .= $this->dtGenerate($key->label,$fieldName.'[]['.$key->value.']','');
-          //     }
-          //     foreach ($fv as $key) {
-          //       $fieldHTML .= $this->dtGenerate($key->label,$fieldName.$key->value,'');
-          //     }
-          //     $fieldHTML .= '</div>';
-          //   }
+            foreach ($fieldValue as $fv) {
+              $fieldHTML .= '<div class="groupContainer">';
+              foreach ($oArr as $key) {
+                $fieldHTML .= $this->dtGenerate($key->label,$fieldName,$fv[$key],$i,$key);
+              }
+              $fieldHTML .= '</div>';
+            }
+            $i++;
           }
 
           $fieldHTML .= '</div>';
