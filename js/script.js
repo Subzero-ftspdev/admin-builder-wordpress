@@ -112,6 +112,16 @@ jQuery(document).ready(function($) {
         tbdContentHTML = tbdContent.html();
         //get the number of dynamic field groups added
         var size = tdOutput.find('.groupContainer').size();
+        //get all the inputs of the hidden html
+        var dtContInputs = $(tbdContentHTML).find('input');
+        //for each input
+        dtContInputs.each(function(index,i){
+          var thisInput = $(this);
+          var inputAttr = thisInput.attr('dtArrName');
+          if(inputAttr[0]){
+            console.log(inputAttr);
+          }
+        });
         console.log(size);
 
         tdOutput.html(tdOutput.html()+tbdContentHTML);
