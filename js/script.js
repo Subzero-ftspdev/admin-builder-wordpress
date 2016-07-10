@@ -110,6 +110,10 @@ jQuery(document).ready(function($) {
         var tbdContent = $(this).parent().siblings('.tbdContent');
         var tdOutput = $(this).parent().siblings('.tdOutput');
         tbdContentHTML = tbdContent.html();
+        //get the number of dynamic field groups added
+        var size = tdOutput.find('.groupContainer').size();
+        console.log(size);
+
         tdOutput.html(tdOutput.html()+tbdContentHTML);
       });
     }

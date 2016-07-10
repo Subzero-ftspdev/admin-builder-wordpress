@@ -237,7 +237,7 @@ if (!class_exists('fieldsC')) {
           $fieldHTML .= '<div class="hidden tbdContent">';
           $fieldHTML .= '<div class="groupContainer">';
           foreach ($oArr as $key) {
-            $fieldHTML .= $this->dtGenerate($key->label,$fieldName,null,$key->value);
+            $fieldHTML .= $this->dtGenerate($key->label,$fieldName,null,null,$key->value);
           }
           $fieldHTML .= '</div>';
           $fieldHTML .= '</div>';
@@ -281,17 +281,16 @@ if (!class_exists('fieldsC')) {
       }
       //dynamic textbox generate
       private function dtGenerate($label,$name,$value,$index=null,$attr=null){
-        $attrStr = '';
         if($index!== null && !empty($null) && !empty($attr)){
           $name = $name.'['.$index.']['.$attr.']';
-        }else{
-          if($attr!==null){
-            $attrStr = 'dtArrName="'.$attr.'" ';
-          }
+        }
+        $attrStr = '';
+        if($attr!=null && !empty($attr)){
+          $attrStr = 'dtArrName="'.$attr.'" ';
         }
         $fieldHTML = '<div class="form-group">';
         $fieldHTML .= '<label for="'.$name.'">'.$label.'</label>';
-        $fieldHTML .= '<input type="text" name="'.$name.'" class="form-control" '.$attrStr.' id="'.$name.'" placeholder="Please enter '.$label.'">';
+        $fieldHTML .= '<input type="text" name="'.$name.'" class="form-control" '.$attrStr.' id="'.$name.'" placeholder="Please enter '.$label.'" value="'.$value.'">';
         $fieldHTML .= '</div>';
         return $fieldHTML;
       }
