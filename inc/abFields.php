@@ -250,12 +250,13 @@ if (!class_exists('fieldsC')) {
           //
             foreach ($fieldValue as $fv) {
               $fieldHTML .= '<div class="groupContainer">';
-              foreach ($oArr as $key) {
-                $fieldHTML .= $this->dtGenerate($key->label,$fieldName,$fv[$key],$i,$key);
+              foreach ($oArr as $key=>$val) {
+                // $sGeneral->showArr($fv);
+                $fieldHTML .= $this->dtGenerate($val->label,$fieldName,$fv[$val->value],$i,$key);
               }
               $fieldHTML .= '</div>';
+              $i++;
             }
-            $i++;
           }
 
           $fieldHTML .= '</div>';
@@ -280,7 +281,7 @@ if (!class_exists('fieldsC')) {
       }
       //dynamic textbox generate
       private function dtGenerate($label,$name,$value,$index=null,$attr=null){
-        if($index!== null && !empty($null) && !empty($attr)){
+        if($index!== null && !empty($attr) && !empty($attr)){
           $name = $name.'['.$index.']['.$attr.']';
         }
         $attrStr = '';
