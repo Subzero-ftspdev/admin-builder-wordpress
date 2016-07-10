@@ -233,10 +233,12 @@ if (!class_exists('fieldsC')) {
           $fieldHTML .= '<input type="hidden" class="abBIHidden" name="'.$fieldName.'" value="'.$fieldValue.'" />';
           break;
           case 'textboxesDynamic':
+          // $sGeneral->showArr($fieldValue);
+
           $oArr = (isset($field['oArr']))?$field['oArr']:array();
           $fieldHTML .= '<div class="hidden tbdContent">';
-          $fieldHTML .= '<button type="button" class="btn btn-primary close">X</button>';
           $fieldHTML .= '<div class="groupContainer">';
+          $fieldHTML .= '<button type="button" class="btn btn-primary dtClose">X</button>';
           foreach ($oArr as $key) {
             $fieldHTML .= $this->dtGenerate($key->label,$fieldName,null,null,$key->value);
           }
@@ -245,16 +247,16 @@ if (!class_exists('fieldsC')) {
 
           $imgAlt = '';
           $fieldHTML .= '<div class="tdOutput">';
+          // $sGeneral->showArr($fieldValue);
+
           if(is_array($fieldValue)){
-            // $sGeneral->showArr($fieldValue);
           //
           $i=0;
 
             foreach ($fieldValue as $fv) {
-              $fieldHTML .= '<button type="button" class="btn btn-primary close">X</button>';
               $fieldHTML .= '<div class="groupContainer">';
+              $fieldHTML .= '<button type="button" class="btn btn-primary dtClose">X</button>';
               foreach ($oArr as $key=>$val) {
-                // $sGeneral->showArr($fv);
                 $fieldValue = (isset($fv[$val->value]))?$fv[$val->value]:'';
                 $fieldHTML .= $this->dtGenerate($val->label,$fieldName,$fv[$val->value],$i,$val->value);
               }
@@ -294,7 +296,7 @@ if (!class_exists('fieldsC')) {
         }
         $fieldHTML = '<div class="form-group">';
         $fieldHTML .= '<label for="'.$name.'">'.$label.'</label>';
-        $fieldHTML .= '<input type="text" name="'.$name.'" class="form-control" '.$attrStr.' id="'.$name.'" placeholder="Please enter '.$label.'" value="'.$value.'">';
+        $fieldHTML .= '<input type="text" name="'.$name.'" class="form-control" '.$attrStr.' placeholder="Please enter '.$label.'" value="'.$value.'">';
         $fieldHTML .= '</div>';
         return $fieldHTML;
       }

@@ -132,7 +132,6 @@ if (!class_exists('aBMetaClass')) {
 
                 // set the new value to a variable
                 $new_meta_value = (isset($_POST[$fieldName]) ? $_POST[$fieldName] : '');
-                // $this->showArr($value);
                 # code...
                 /* Get the meta key. */
                 $meta_key = $fieldName;

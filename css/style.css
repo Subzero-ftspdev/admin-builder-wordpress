@@ -60,13 +60,15 @@ form.abForm img.uploadImage, .aBMB img.uploadImage {
     margin: 20px auto;
 }
 .groupContainer{
+  position: relative;
   margin:20px 0;
   padding:20px;
   background:#d7d7d7;
 }
 button.close{
-  right:15px;
-  top:20px;
+  position: absolute;
+  right:0px;
+  top:0px;
   padding:5px;
   float:right;
   margin:5px;
