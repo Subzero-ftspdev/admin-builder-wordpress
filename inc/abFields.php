@@ -235,6 +235,7 @@ if (!class_exists('fieldsC')) {
           case 'textboxesDynamic':
           $oArr = (isset($field['oArr']))?$field['oArr']:array();
           $fieldHTML .= '<div class="hidden tbdContent">';
+          $fieldHTML .= '<button type="button" class="btn btn-primary close">X</button>';
           $fieldHTML .= '<div class="groupContainer">';
           foreach ($oArr as $key) {
             $fieldHTML .= $this->dtGenerate($key->label,$fieldName,null,null,$key->value);
