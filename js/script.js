@@ -113,21 +113,19 @@ jQuery(document).ready(function($) {
         //get the number of dynamic field groups added
         var size = tdOutput.find('.groupContainer').size();
 
-        var tbdContentHTMLObj = $(tbdContentHTML);
+        var tbdContentHTMLObj = $('<div>'+tbdContentHTML+'</div>');
+
         //get all the inputs of the hidden html
         var dtContInputs = tbdContentHTMLObj.find('input');
-        console.log('inputs count:'+dtContInputs.size());
         //for each input
         dtContInputs.each(function(index,i){
           var thisInput = $(this);
           var inputAttr = thisInput.attr('dtArrName');
           if(inputAttr[0]){
-            console.log(inputAttr);
             var thisInputName = thisInput.attr('name');
             var newInputName = thisInputName+'['+size+']['+inputAttr+']';
             //set the new name to the input
             thisInput.attr('name',newInputName);
-            console.log(newInputName);
           }
         });
         // console.log(size);
