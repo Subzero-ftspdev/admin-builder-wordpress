@@ -250,6 +250,7 @@ if (!class_exists('fieldsC')) {
           $i=0;
 
             foreach ($fieldValue as $fv) {
+              $fieldHTML .= '<button type="button" class="btn btn-primary close">X</button>';
               $fieldHTML .= '<div class="groupContainer">';
               foreach ($oArr as $key=>$val) {
                 // $sGeneral->showArr($fv);

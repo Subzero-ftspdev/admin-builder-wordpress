@@ -64,3 +64,18 @@ form.abForm img.uploadImage, .aBMB img.uploadImage {
   padding:20px;
   background:#d7d7d7;
 }
+button.close{
+  position: absolute;
+  right:15px;
+  top:20px;
+  padding:5px;
+  float:right;
+  margin:5px;
+  font-size: 18px;
+}
+button.close:hover{
+  background: rgb(25, 49, 59);
+  opacity: 1;
+  padding:5px;
+  color:#FFF;
+}
