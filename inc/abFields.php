@@ -237,7 +237,7 @@ if (!class_exists('fieldsC')) {
           $fieldHTML .= '<div class="hidden tbdContent">';
           $fieldHTML .= '<div class="groupContainer">';
           foreach ($oArr as $key) {
-            $fieldHTML .= $this->dtGenerate($key->label,$fieldName.$key->value,'');
+            $fieldHTML .= $this->dtGenerate($key->label,$fieldName,null,$key->value);
           }
           $fieldHTML .= '</div>';
           $fieldHTML .= '</div>';
@@ -245,15 +245,18 @@ if (!class_exists('fieldsC')) {
           $imgAlt = '';
           $fieldHTML .= '<div class="tdOutput">';
           if(is_array($fieldValue)){
-            $sGeneral->showArr($fieldValue);
-
-            foreach ($fieldValue as $fv) {
-              $fieldHTML .= '<div class="groupContainer">';
-              foreach ($fv as $key) {
-                $fieldHTML .= $this->dtGenerate($key->label,$fieldName.$key->value,'');
-              }
-              $fieldHTML .= '</div>';
-            }
+            // $sGeneral->showArr($fieldValue);
+          //
+          //   foreach ($fieldValue as $fv) {
+          //     $fieldHTML .= '<div class="groupContainer">';
+          //     foreach ($oArr as $key) {
+          //       $fieldHTML .= $this->dtGenerate($key->label,$fieldName.'[]['.$key->value.']','');
+          //     }
+          //     foreach ($fv as $key) {
+          //       $fieldHTML .= $this->dtGenerate($key->label,$fieldName.$key->value,'');
+          //     }
+          //     $fieldHTML .= '</div>';
+          //   }
           }
 
           $fieldHTML .= '</div>';
@@ -277,10 +280,18 @@ if (!class_exists('fieldsC')) {
 
       }
       //dynamic textbox generate
-      private function dtGenerate($label,$name,$value){
+      private function dtGenerate($label,$name,$value,$index=null,$attr=null){
+        $attrStr = '';
+        if($index!== null && !empty($null) && !empty($attr)){
+          $name = $name.'['.$index.']['.$attr.']';
+        }else{
+          if($attr!==null){
+            $attrStr = 'dtArrName="'.$attr.'" ';
+          }
+        }
         $fieldHTML = '<div class="form-group">';
         $fieldHTML .= '<label for="'.$name.'">'.$label.'</label>';
-        $fieldHTML .= '<input type="text" name="'.$name.'[]" class="form-control" id="'.$name.'" placeholder="Please enter '.$label.'">';
+        $fieldHTML .= '<input type="text" name="'.$name.'" class="form-control" '.$attrStr.' id="'.$name.'" placeholder="Please enter '.$label.'">';
         $fieldHTML .= '</div>';
         return $fieldHTML;
       }
