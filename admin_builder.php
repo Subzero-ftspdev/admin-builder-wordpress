@@ -3,7 +3,7 @@
   Plugin Name: Admin Builder
   Plugin URI: http://admin-builder.com
   Description: A plugin that generates admin panel pages & posts,sidebars,custom admin pages with tabs, custom post types, meta boxes and fields (with unlimited textbox, textarea, checkbox, custom select (dropdown box), datepicker, timepicker, colorpicker, upload media fields, with configurable options) Based on what's exported from http://admin-builder.com
-  Version: 1.1
+  Version: 1.1.1
   Author: rootabout
   Author URI: http://admin-builder.com
   License: GPLv2 or later
