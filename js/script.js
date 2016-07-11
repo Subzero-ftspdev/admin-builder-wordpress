@@ -137,9 +137,24 @@ jQuery(document).ready(function($) {
     var dtClose = $('.groupContainer button.close');
     if(dtClose[0]){
       dtClose.live('click',function(){
-        $(this).parent().remove();
+        var cThis = $(this);//current this
+        var cc = cThis.parent().parent();
+        cThis.parent().remove();
+        dtGenerateNames(cc);
+
       });
     }
-
-
+    function dtGenerateNames(parObj){
+      var groupContainers = parObj.find('.groupContainer');
+      groupContainers.each(function(cIndex,i){
+        var gcThis = $(this);
+        var inputs = gcThis.find('input');
+        inputs.each(function(iIndex,i){
+          var iThis = $(this); //this input
+          var origName = iThis.attr('origName');
+          var dtArrName = iThis.attr('dtArrName');
+          iThis.attr('name',origName+'['+cIndex+']['+dtArrName+']');
+        });
+      });
+    }
 });
