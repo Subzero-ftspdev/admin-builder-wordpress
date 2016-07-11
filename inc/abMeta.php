@@ -131,7 +131,7 @@ if (!class_exists('aBMetaClass')) {
                 $fieldName = 'abMB_'.$mboxValue['name'].$field['name'];
 
                 // set the new value to a variable
-                $new_meta_value = (isset($_POST[$fieldName]) ? $_POST[$fieldName] : '');
+                $new_meta_value = (isset($_POST[$fieldName]) ? $_POST[$fieldName] : '0');
                 # code...
                 /* Get the meta key. */
                 $meta_key = $fieldName;
@@ -140,10 +140,7 @@ if (!class_exists('aBMetaClass')) {
                 $meta_value = get_post_meta($post_id, $meta_key, true);
 
                 /* If a new meta value was added and there was no previous value, add it. */
-                if ($new_meta_value != '' && '' == $meta_value) {
-                    add_post_meta($post_id, $meta_key, $new_meta_value);
-                } /* If the new meta value does not match the old value, update it. */
-                elseif ($new_meta_value !== $meta_value) {
+                if ($new_meta_value !== $meta_value) {
                     update_post_meta($post_id, $meta_key, $new_meta_value);
                 } /* If there is no new meta value but an old value exists, delete it. */
                 elseif ('' == $new_meta_value && $meta_value) {
