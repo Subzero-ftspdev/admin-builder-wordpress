@@ -130,8 +130,7 @@ jQuery(document).ready(function($) {
         });
         // console.log(size);
         tbdContentHTML = tbdContentHTMLObj.html();
-
-        tdOutput.html(tdOutput.html()+tbdContentHTML);
+        tdOutput.append(tbdContentHTML);
       });
     }
     // close button for dynamic fields containers
