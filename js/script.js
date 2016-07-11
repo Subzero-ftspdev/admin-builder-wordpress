@@ -122,7 +122,7 @@ jQuery(document).ready(function($) {
           var thisInput = $(this);
           var inputAttr = thisInput.attr('dtArrName');
           if(inputAttr[0]){
-            var thisInputName = thisInput.attr('name');
+            var thisInputName = thisInput.attr('origName');
             var newInputName = thisInputName+'['+size+']['+inputAttr+']';
             //set the new name to the input
             thisInput.attr('name',newInputName);

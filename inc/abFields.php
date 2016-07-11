@@ -287,16 +287,19 @@ if (!class_exists('fieldsC')) {
       }
       //dynamic textbox generate
       private function dtGenerate($label,$name,$value,$index=null,$attr=null){
+        $arrName = $name;
+        $origNameStr = 'origName="'.$name.'" ';
         if($index!== null && !empty($attr) && !empty($attr)){
-          $name = $name.'['.$index.']['.$attr.']';
+          $arrName = $name.'['.$index.']['.$attr.']';
         }
+
         $attrStr = '';
         if($attr!=null && !empty($attr)){
           $attrStr = 'dtArrName="'.$attr.'" ';
         }
         $fieldHTML = '<div class="form-group">';
         $fieldHTML .= '<label for="'.$name.'">'.$label.'</label>';
-        $fieldHTML .= '<input type="text" name="'.$name.'" class="form-control" '.$attrStr.' placeholder="Please enter '.$label.'" value="'.$value.'">';
+        $fieldHTML .= '<input type="text" name="'.$arrName.'" '.$origNameStr.'  class="form-control" '.$attrStr.' placeholder="Please enter '.$label.'" value="'.$value.'">';
         $fieldHTML .= '</div>';
         return $fieldHTML;
       }
