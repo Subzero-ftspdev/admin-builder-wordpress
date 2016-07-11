@@ -138,6 +138,13 @@ if (!class_exists('aBMetaClass')) {
 
                 /* Get the meta value of the custom field key. */
                 $meta_value = get_post_meta($post_id, $meta_key, true);
+                if(is_array($new_meta_value)){
+                  $tempNewMetaValue = array();
+                  foreach ($new_meta_value as $key => $value) {
+                    $tempNewMetaValue[]=$value;
+                  }
+                  $new_meta_value = $tempNewMetaValue;
+                }
 
                 /* If a new meta value was added and there was no previous value, add it. */
                 if ($new_meta_value !== $meta_value) {
