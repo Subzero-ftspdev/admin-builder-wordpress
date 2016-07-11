@@ -72,6 +72,8 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
     {
         $generalArr = $this->generalArr;
         ?>
+        <div class="container-fluid">
+
       <form name="abForm" class="abForm" method="post" action="">
       <?php
         foreach ($generalArr->menus as $key => $value) {
@@ -192,8 +194,11 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
 </p>
 
 </form>
+</div>
+</div>
         <?php
 
-    }
+
+      }
     }
 }
