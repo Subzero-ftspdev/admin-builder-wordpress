@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: meta, fields, auto, easy, fast, develop, developers, RAD, build, code, unlimited, service, field
 Requires at least: 4.0
 Tested up to: 4.5
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -156,8 +156,11 @@ Nothing affected from the previous version
   = 1.1.1 =
   Added Dynamic Textboxes functionality for custom post types and admin pages. You can create unlimited dynamic text boxes of unlimited dynamic text boxes now.
 
-  = 1.1.1 =
+  = 1.1.2 =
   Styled and Completed the admin page HTML & SCSS structure better.
+
+  = 1.1.3 =
+  The ability to manage active settings from the database has been introduced. There's a new administration panel page called Admin Builder that allows you to delete any Plugin or Theme related Setting from the database that you are not usin.
 
 
 == Arbitrary section ==
