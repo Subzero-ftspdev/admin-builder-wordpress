@@ -88,7 +88,6 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
                     <?php echo $pageDescription;
                     ?>
                   </p>
-
                   <?php
 
                   //must check that the user has the required capability

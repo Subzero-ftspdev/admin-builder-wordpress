@@ -11,7 +11,9 @@ require_once 'abCpt.php';
 require_once 'abCPages.php';
 // sidebars functionality
 require_once 'abSidebars.php';
-//widgets functionalityz`b
+//Plugin functionality
+require_once 'ab.php';
+
 //
 //
 // Initializing the functionality
