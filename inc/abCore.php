@@ -11,6 +11,8 @@ require_once 'abCpt.php';
 require_once 'abCPages.php';
 // sidebars functionality
 require_once 'abSidebars.php';
+//rest api routes
+require_once 'abRoutes.php';
 //Plugin functionality
 require_once 'ab.php';
 

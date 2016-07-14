@@ -34,7 +34,9 @@ if (!class_exists('GeneralFunctionality')) {
                   new aBcPagesClass($dataArrSettings);
                   //custom sidebars
                   new abSidebars($dataArrSettings);
-                  // custom widgets Class
+                  // custom rest api routes Class
+                  new abRoutes($dataArrSettings);
+
                 }
             }
 
