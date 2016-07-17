@@ -27,13 +27,6 @@ if (!class_exists('abRoutes')) {
                             $namespace = (isset($cKey->namespace)) ? $cKey->namespace : '';
                             $route_path = (isset($cKey->route_path) && !empty($cKey->route_path)) ? $cKey->route_path : '';
                             $rRMethod = (isset($key->rRMethod) && $key->rRMethod === 'post') ? 'POST' : 'GET';
-                            // echo $namespace;
-                            // echo "<br/>";
-                            // echo $route_path;
-                            // echo "<br/>";
-                            // echo $rRMethod;
-                            // echo "<br/>";
-                            // echo $callbackFunction;
                             register_rest_route($namespace, $route_path,
                             array(
                               'methods' => $rRMethod,
