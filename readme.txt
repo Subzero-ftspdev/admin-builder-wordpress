@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: meta, fields, auto, easy, fast, develop, developers, RAD, build, code, unlimited, service, field
 Requires at least: 4.0
 Tested up to: 4.5
-Stable tag: 1.1.3
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,6 +162,11 @@ Nothing affected from the previous version
   = 1.1.3 =
   The ability to manage active settings from the database has been introduced. There's a new administration panel page called Admin Builder that allows you to delete any Plugin or Theme related Setting from the database that you are not usin.
 
+  = 1.1.4 =
+  Added Rest Api routes functionality with the
+
+  = 1.1.5 =
+  Added routes php file ... missed in the previous version update
 
 == Arbitrary section ==
 
