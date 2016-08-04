@@ -45,6 +45,7 @@ if (!class_exists('fieldsC')) {
               $post_status = '';
           }
           if (isset($post->ID)) {
+
               $fieldValue = get_post_meta($post->ID, $fieldName, true);
           }
           $label = $field['label'];
@@ -169,7 +170,19 @@ if (!class_exists('fieldsC')) {
                 //comma separated string into array
               $selected = selected($post->ID, $fieldValue, false) ? selected($post->ID, $fieldValue, false) : '';
               //set the options
-              $fieldHTML .= '<option  '.$selected.' value="'.$post->ID.'" >'.$post->post_title.'</option>';
+              $fieldHTML .= '<option  '.$selected.' value="'.$post->ID.'" >'.$post->post_title.$fieldValue.'</option>';
+            }
+
+            break;
+            case 'users':
+            $argsx = array();
+              $customList = get_users($argsx);
+            //lines into array
+            foreach ($customList as $usr) {
+                //comma separated string into array
+              $selected = selected($usr->ID, $fieldValue, false) ? selected($usr->ID, $fieldValue, false) : '';
+              //set the options
+              $fieldHTML .= '<option  '.$selected.' value="'.$usr->ID.'" >'.$usr->user_login.'</option>';
             }
 
             break;
@@ -235,12 +248,12 @@ if (!class_exists('fieldsC')) {
           case 'textboxesDynamic':
           // $sGeneral->showArr($fieldValue);
 
-          $oArr = (isset($field['oArr']))?$field['oArr']:array();
+          $oArr = (isset($field['oArr'])) ? $field['oArr'] : array();
           $fieldHTML .= '<div class="hidden tbdContent">';
           $fieldHTML .= '<div class="groupContainer">';
           $fieldHTML .= '<button type="button" class="btn btn-primary close">X</button>';
           foreach ($oArr as $key) {
-            $fieldHTML .= $this->dtGenerate($key->label,$fieldName,null,null,$key->value);
+              $fieldHTML .= $this->dtGenerate($key->label, $fieldName, null, null, $key->value);
           }
           $fieldHTML .= '</div>';
           $fieldHTML .= '</div>';
@@ -249,20 +262,20 @@ if (!class_exists('fieldsC')) {
           $fieldHTML .= '<div class="tdOutput">';
           // $sGeneral->showArr($fieldValue);
 
-          if(is_array($fieldValue)){
-          //
-          $i=0;
+          if (is_array($fieldValue)) {
+              //
+          $i = 0;
 
-            foreach ($fieldValue as $fv) {
-              $fieldHTML .= '<div class="groupContainer">';
-              $fieldHTML .= '<button type="button" class="btn btn-primary close">X</button>';
-              foreach ($oArr as $key=>$val) {
-                $fieldValue = (isset($fv[$val->value]))?$fv[$val->value]:'';
-                $fieldHTML .= $this->dtGenerate($val->label,$fieldName,$fv[$val->value],$i,$val->value);
+              foreach ($fieldValue as $fv) {
+                  $fieldHTML .= '<div class="groupContainer">';
+                  $fieldHTML .= '<button type="button" class="btn btn-primary close">X</button>';
+                  foreach ($oArr as $key => $val) {
+                      $fieldValue = (isset($fv[$val->value])) ? $fv[$val->value] : '';
+                      $fieldHTML .= $this->dtGenerate($val->label, $fieldName, $fv[$val->value], $i, $val->value);
+                  }
+                  $fieldHTML .= '</div>';
+                  ++$i;
               }
-              $fieldHTML .= '</div>';
-              $i++;
-            }
           }
 
           $fieldHTML .= '</div>';
@@ -286,22 +299,24 @@ if (!class_exists('fieldsC')) {
 
       }
       //dynamic textbox generate
-      private function dtGenerate($label,$name,$value,$index=null,$attr=null){
-        $arrName = $name;
-        $origNameStr = 'origName="'.$name.'" ';
-        if($index!== null && !empty($attr) && !empty($attr)){
-          $arrName = $name.'['.$index.']['.$attr.']';
-        }
+      private function dtGenerate($label, $name, $value, $index = null, $attr = null)
+      {
+          $arrName = $name;
+          $origNameStr = 'origName="'.$name.'" ';
+          if ($index !== null && !empty($attr) && !empty($attr)) {
+              $arrName = $name.'['.$index.']['.$attr.']';
+          }
 
-        $attrStr = '';
-        if($attr!=null && !empty($attr)){
-          $attrStr = 'dtArrName="'.$attr.'" ';
-        }
-        $fieldHTML = '<div class="form-group">';
-        $fieldHTML .= '<label for="'.$name.'">'.$label.'</label>';
-        $fieldHTML .= '<input type="text" name="'.$arrName.'" '.$origNameStr.'  class="form-control" '.$attrStr.' placeholder="Please enter '.$label.'" value="'.$value.'">';
-        $fieldHTML .= '</div>';
-        return $fieldHTML;
+          $attrStr = '';
+          if ($attr != null && !empty($attr)) {
+              $attrStr = 'dtArrName="'.$attr.'" ';
+          }
+          $fieldHTML = '<div class="form-group">';
+          $fieldHTML .= '<label for="'.$name.'">'.$label.'</label>';
+          $fieldHTML .= '<input type="text" name="'.$arrName.'" '.$origNameStr.'  class="form-control" '.$attrStr.' placeholder="Please enter '.$label.'" value="'.$value.'">';
+          $fieldHTML .= '</div>';
+
+          return $fieldHTML;
       }
     }
 }

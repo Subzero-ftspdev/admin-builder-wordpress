@@ -61,7 +61,7 @@ if (!class_exists('aBMetaClass')) {
                     'context' => $context,
                     'priority' => $priority,
                 );
-              }
+            }
             }
 
             return $newArr;
@@ -80,7 +80,7 @@ if (!class_exists('aBMetaClass')) {
             $callback_args = null;
             if (!empty($metaArr)) {
                 foreach ($metaArr as $count => $box) {
-                  $name = $box['name'] ? $box['name'] : 'defName';
+                    $name = $box['name'] ? $box['name'] : 'defName';
                     $type = $box['type'] ? $box['type'] : 'post';
                     $cpt_name = 'post';
                     if ($type === 'cpt' && isset($box['cpt_name'])) {
@@ -107,59 +107,62 @@ if (!class_exists('aBMetaClass')) {
     // save meta callback function on post (post/page/cpt) admin page submit/
     public function save_metaBox_fields($post_id, $post)
     {
-        $metaArr = $this->gametaboxesArr;
-        foreach ($metaArr as $mboxKey => $mboxValue) {
-            switch ($mboxValue['type']) {
-              //save meta if post, page, cpt
-            case 'post':
-            case 'page':
-            case 'cpt':
-            /* Verify the nonce before proceeding. */
-            if (!isset($_POST['aB_nounce_'.$mboxValue['name']]) || !wp_verify_nonce($_POST['aB_nounce_'.$mboxValue['name']], basename(__FILE__))) {
-                return $post_id;
-            }
+      $metaArr = $this->gametaboxesArr;
+      foreach ($metaArr as $mboxKey => $mboxValue) {
+          switch ($mboxValue['type']) {
+                  //save meta if post, page, cpt
+              case 'post':
+              case 'page':
+              case 'cpt':
+                  /* Verify the nonce before proceeding. */
+                if (!isset($_POST['aB_nounce_'.$mboxValue['name']]) || !wp_verify_nonce($_POST['aB_nounce_'.$mboxValue['name']], basename(__FILE__))) {
+                    continue;
+                }
 
-            /* Get the post type object. */
-            $post_type = get_post_type_object($post->post_type);
-            /* Check if the current user has permission to edit the post. */
-            if (!current_user_can($post_type->cap->edit_post, $post_id)) {
-                return $post_id;
-            }
-            foreach ($mboxValue['fields'] as $key => $field) {
-
-                //field name
-                $fieldName = 'abMB_'.$mboxValue['name'].$field['name'];
-
-                // set the new value to a variable
-                $new_meta_value = (isset($_POST[$fieldName]) ? $_POST[$fieldName] : '0');
-                # code...
-                /* Get the meta key. */
-                $meta_key = $fieldName;
-
-                /* Get the meta value of the custom field key. */
-                $meta_value = get_post_meta($post_id, $meta_key, true);
-                if(is_array($new_meta_value)){
-                  $tempNewMetaValue = array();
-                  foreach ($new_meta_value as $key => $value) {
-                    $tempNewMetaValue[]=$value;
+                  /* Get the post type object. */
+                  $post_type = get_post_type_object($post->post_type);
+                  /* Check if the current user has permission to edit the post. */
+                  if (!current_user_can($post_type->cap->edit_post, $post_id)) {
+                      return $post_id;
                   }
-                  $new_meta_value = $tempNewMetaValue;
-                }
+                  foreach ($mboxValue['fields'] as $key => $field) {
 
-                /* If a new meta value was added and there was no previous value, add it. */
-                if ($new_meta_value !== $meta_value) {
-                    update_post_meta($post_id, $meta_key, $new_meta_value);
-                } /* If there is no new meta value but an old value exists, delete it. */
-                elseif ('' == $new_meta_value && $meta_value) {
-                    delete_post_meta($post_id, $meta_key, $meta_value);
-                }
-            }
-        break;
-        //don't try to save meta if anything else
-        default:
-          continue;
-        break;
-      }
+                      //field name
+                      $fieldName = 'abMB_'.$mboxValue['name'].$field['name'];
+
+
+                      // set the new value to a variable
+                      $new_meta_value = (isset($_POST[$fieldName]) ? $_POST[$fieldName] : '0');
+                      # code...
+                      /* Get the meta key. */
+                      $meta_key = $fieldName;
+
+                      /* Get the meta value of the custom field key. */
+                      $meta_value = get_post_meta($post_id, $meta_key, true);
+
+                      if (is_array($new_meta_value)) {
+                          $tempNewMetaValue = array();
+                          foreach ($new_meta_value as $key => $value) {
+                              $tempNewMetaValue[] = $value;
+                          }
+
+                          $new_meta_value = $tempNewMetaValue;
+                      }
+
+                      /* If a new meta value was added and there was no previous value, add it. */
+                      if ($new_meta_value !== $meta_value) {
+                          update_post_meta($post_id, $meta_key, $new_meta_value);
+                      } /* If there is no new meta value but an old value exists, delete it. */
+                      elseif ('' == $new_meta_value && $meta_value) {
+                          delete_post_meta($post_id, $meta_key, $meta_value);
+                      }
+                  }
+            break;
+            //don't try to save meta if anything else
+            default:
+              continue;
+            break;
+          }
         }
     }
 

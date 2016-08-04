@@ -3,8 +3,8 @@ Contributors: rootabout
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: meta, fields, auto, easy, fast, develop, developers, RAD, build, code, unlimited, service, field
 Requires at least: 4.0
-Tested up to: 4.5
-Stable tag: 1.1.6
+Tested up to: 4.5.3
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,6 +170,9 @@ Nothing affected from the previous version
 
   = 1.1.6 =
 Fixed a bug in the routes functionality where post was not being generated, just GET
+
+= 1.1.6 =
+Fixed a saving bug, added users functionality for select box.
 
 == Arbitrary section ==
 
