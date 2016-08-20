@@ -7,9 +7,6 @@ if (!function_exists('aBEnqueue')) {
     {
         global $rootURL;
     //plugin_dir_url( __FILE__ )
-    //bootstrap style
-    wp_register_style('aBBootstrap', plugin_dir_url( __FILE__ ) .'../css/bootstrap.min.css');
-        wp_enqueue_style('aBBootstrap');
         wp_register_style('jQueryUiCore', plugin_dir_url( __FILE__ ) .'../css/jquery-ui.css');
         wp_enqueue_style('jQueryUiCore');
         wp_register_style('iris', plugin_dir_url( __FILE__ ) .'../css/iris.min.css');
@@ -34,8 +31,6 @@ if (!function_exists('aBEnqueue')) {
         wp_enqueue_script('jquery-ui-draggable', false, array('jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-mouse'));
         wp_enqueue_script('jquery-ui-slider', false, array('jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-mouse'));
 
-        wp_register_script('aBbootrap', plugin_dir_url( __FILE__ ).'../js/bootstrap.min.js');
-        wp_enqueue_script('aBBootrap');
         wp_register_script('aBColor', plugin_dir_url( __FILE__ ).'../js/color.js');
         wp_enqueue_script('aBColor');
         wp_register_script('aBIris', plugin_dir_url( __FILE__ ).'../js/iris.js', array('jquery-ui-core', 'jquery-ui-draggable', 'jquery-ui-slider'));

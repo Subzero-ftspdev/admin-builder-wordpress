@@ -7,8 +7,11 @@ body.wp-admin {
     margin: 10px 0;
 }
 
+.aBMB .row{
+padding:10px;
+}
 .aBMB .row:nth-child(2n) {
-  border-top: 3px solid rgb(148, 148, 148);
+	background:#e4e4e4;
 }
 form.aBForm textarea {
     width: 50%;
@@ -84,4 +87,15 @@ button.close:hover{
   padding:5px;
   border:1px solid #e0e0e0;
   margin:5px 0;
+}
+.ab{
+	display:inline-block;
+	overflow:hidden;
+	width:100%;
+}
+:not(#poststuff) {
+  .hidden {
+    display: none !important;
+    visibility: hidden !important;
+  }
 }
