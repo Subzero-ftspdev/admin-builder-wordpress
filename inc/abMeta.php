@@ -90,7 +90,7 @@ if (!class_exists('aBMetaClass')) {
                     }
                     $context = $box['context'] ? $box['context'] : $context;
                     $priority = $box['priority'] ? $box['priority'] : $priority;
-                    $id .= $name.$count;
+                    $id = $name.$count;
                     if (isset($box['label'])) {
                         $title = $box['label'] ? $box['label'] : $title;
                     }
@@ -107,9 +107,9 @@ if (!class_exists('aBMetaClass')) {
     // save meta callback function on post (post/page/cpt) admin page submit/
     public function save_metaBox_fields($post_id, $post)
     {
-      $metaArr = $this->gametaboxesArr;
-      foreach ($metaArr as $mboxKey => $mboxValue) {
-          switch ($mboxValue['type']) {
+        $metaArr = $this->gametaboxesArr;
+        foreach ($metaArr as $mboxKey => $mboxValue) {
+            switch ($mboxValue['type']) {
                   //save meta if post, page, cpt
               case 'post':
               case 'page':
@@ -129,7 +129,6 @@ if (!class_exists('aBMetaClass')) {
 
                       //field name
                       $fieldName = 'abMB_'.$mboxValue['name'].$field['name'];
-
 
                       // set the new value to a variable
                       $new_meta_value = (isset($_POST[$fieldName]) ? $_POST[$fieldName] : '0');
@@ -169,7 +168,7 @@ if (!class_exists('aBMetaClass')) {
         public function meta_callback_function($post, $args)
         {
             ?>
-        <div class="container-fluid aBMB">
+        <div class="container-fluid aBMB ab">
             <?php wp_nonce_field(basename(__FILE__), 'aB_nounce_'.$args['args']['name']);
             foreach ($args['args']['fields'] as $field => $val) {
                 $this->generate_field($val, $args['args'], $post);

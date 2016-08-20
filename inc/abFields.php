@@ -45,7 +45,6 @@ if (!class_exists('fieldsC')) {
               $post_status = '';
           }
           if (isset($post->ID)) {
-
               $fieldValue = get_post_meta($post->ID, $fieldName, true);
           }
           $label = $field['label'];
@@ -283,7 +282,9 @@ if (!class_exists('fieldsC')) {
           break;
         }
           ?>
-        <div class="row field">
+        <div class="row">
+          <div class="field">
+
           <div class="col-sm-2">
             <label class="title"><?php _e($label);
           ?></label>
@@ -294,6 +295,7 @@ if (!class_exists('fieldsC')) {
             <label class="description">* <?php _e($description);
           ?></label>
           </div>
+        </div>
         </div>
         <?php
 

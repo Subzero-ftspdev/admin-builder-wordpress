@@ -6,11 +6,9 @@ body.wp-admin {
     display: block;
     margin: 10px 0;
 }
-.aBMB .row {
-    padding: 10px;
-}
+
 .aBMB .row:nth-child(2n) {
-    background: #f7f7f7;
+  border-top: 3px solid rgb(148, 148, 148);
 }
 form.aBForm textarea {
     width: 50%;

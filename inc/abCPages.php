@@ -72,7 +72,7 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
     {
         $generalArr = $this->generalArr;
         ?>
-        <div class="container-fluid">
+        <div class="container-fluid ab">
 
       <form name="abForm" class="abForm" method="post" action="">
       <?php
