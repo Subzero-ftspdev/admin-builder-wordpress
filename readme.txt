@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: meta, fields, auto, easy, fast, develop, developers, RAD, build, code, unlimited, service, field
 Requires at least: 4.0
 Tested up to: 4.6
-Stable tag: 1.1.8
+Stable tag: 1.1.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,25 +66,25 @@ Added support for generating pages
 = 1.0.2.2 =
 Export file changed, and it's interpretation
 
-= 1.0.2.3=
+= 1.0.2.3 =
 Updated plugin info text
 
-= 1.0.2.4=
+= 1.0.2.4 =
 Plugin now works with service export properly and with code examples
 
-= 1.0.2.5=
+= 1.0.2.5 =
 Updated style for label.description
 
-= 1.0.2.6=
+= 1.0.2.6 =
 Added image support for signatures
 
-=1.0.2.7=
+= 1.0.2.7 =
 Styled the posts meta box for image uploads better
 
-=1.0.2.8=
+= 1.0.2.8 =
 Fixed a wordpress layout bug
 
-=1.0.2.9=
+= 1.0.2.9 =
 Custom page 1 field saving bug fixed
 
 = 1.0.2.10 =
@@ -119,6 +119,15 @@ Fixed a saving bug, added users functionality for select box
 
 = 1.1.8 =
 Fixed a styling issue that was disabling screen options
+
+= 1.1.9 =
+Removed bootstrap css
+
+= 1.1.10 =
+Re-added bootstrap icons functionality for css
+
+= 1.1.11 =
+Settings are no longer updated in the database based on plugin/theme version, but are updated based on themselves, if they are different, only then the configured settings change. -> Improvement in UX
 
 == Arbitrary section ==
 
