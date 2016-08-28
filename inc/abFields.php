@@ -282,21 +282,18 @@ if (!class_exists('fieldsC')) {
           break;
         }
           ?>
-        <div class="row">
-          <div class="field">
+	<tr>
+        <th class="row">
 
-          <div class="col-sm-2">
-            <label class="title"><?php _e($label);
-          ?></label>
-          </div>
-          <div class="col-sm-10">
+            <label class="title"><?php _e($label); ?></label>
+	</th>
+	<td>
             <?php echo $fieldHTML;
           ?>
             <label class="description">* <?php _e($description);
           ?></label>
-          </div>
-        </div>
-        </div>
+        </td>
+        </tr>
         <?php
 
       }

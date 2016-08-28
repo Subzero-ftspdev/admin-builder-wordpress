@@ -6,6 +6,8 @@ if (!function_exists('aBEnqueue')) {
     function aBEnqueue()
     {
         global $rootURL;
+        wp_register_style('bootstrapFontIcons', plugin_dir_url( __FILE__ ) .'../css/bootstrap.min.css');
+        wp_enqueue_style('bootstrapFontIcons');
     //plugin_dir_url( __FILE__ )
         wp_register_style('jQueryUiCore', plugin_dir_url( __FILE__ ) .'../css/jquery-ui.css');
         wp_enqueue_style('jQueryUiCore');

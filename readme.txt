@@ -3,8 +3,8 @@ Contributors: rootabout
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: meta, fields, auto, easy, fast, develop, developers, RAD, build, code, unlimited, service, field
 Requires at least: 4.0
-Tested up to: 4.5.3
-Stable tag: 1.1.7
+Tested up to: 4.6
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,86 +93,32 @@ Added Bootstrap Icons Field type Functionality
 = 1.0.4 =
  Added database loading/generating functionality
 
-== Upgrade Notice ==
+= 1.1 =
+Interpreting new export functionality for themes and plugins, integrated into the plugin.
 
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
+= 1.1.1 =
+Added Dynamic Textboxes functionality for custom post types and admin pages. You can create unlimited dynamic text boxes of unlimited dynamic text boxes now.
 
-= 1.0.0.1 =
-Changed service link
+= 1.1.2 =
+Styled and Completed the admin page HTML & SCSS structure better.
 
-= 1.0.0.2 =
-Changed service link
+= 1.1.3 =
+The ability to manage active settings from the database has been introduced. There's a new administration panel page called Admin Builder that allows you to delete any Plugin or Theme related Setting from the database that you are not usin.
 
-= 1.0.0.3 =
-Styled textarea in admin panel + styled import button
+= 1.1.4 =
+Added Rest Api routes functionality with the
 
-= 1.0.1 =
-Added custom post types generation features from json
-Stripped slasshes on json import
+= 1.1.5 =
+Added routes php file ... missed in the previous version update
 
-= 1.0.2 =
-Nothing affected from the previous version
-
-= 1.0.2.2 =
-Nothing affected from the previous version
-
-= 1.0.2.3=
-Nothing affected from the previous version
-
-= 1.0.2.3=
-Nothing affected from the previous version
-
-= 1.0.2.4=
-Nothing affected from the previous version
-
-= 1.0.2.5=
-Nothing affected from the previous version
-
-= 1.0.2.6=
-Nothing affected from the previous version
-
-= 1.0.2.7=
-Nothing affected from the previous version
-
-= 1.0.2.8=
-Nothing affected from the previous version
-
-= 1.0.2.9=
-Nothing affected from the previous version
-
-= 1.0.2.10 =
-Nothing affected from the previous version
-
-= 1.0.3 =
- Restoring the 1.0.2.10 functionality
-
- = 1.0.4 =
-  Added database loading/generating functionality - everything works differently now. Things must be exported from service and re-imported according to the new rules.
-
-  = 1.1 =
-  Interpreting new export functionality for themes and plugins, integrated into the plugin.
-
-  = 1.1.1 =
-  Added Dynamic Textboxes functionality for custom post types and admin pages. You can create unlimited dynamic text boxes of unlimited dynamic text boxes now.
-
-  = 1.1.2 =
-  Styled and Completed the admin page HTML & SCSS structure better.
-
-  = 1.1.3 =
-  The ability to manage active settings from the database has been introduced. There's a new administration panel page called Admin Builder that allows you to delete any Plugin or Theme related Setting from the database that you are not usin.
-
-  = 1.1.4 =
-  Added Rest Api routes functionality with the
-
-  = 1.1.5 =
-  Added routes php file ... missed in the previous version update
-
-  = 1.1.6 =
+= 1.1.6 =
 Fixed a bug in the routes functionality where post was not being generated, just GET
 
 = 1.1.6 =
-Fixed a saving bug, added users functionality for select box.
+Fixed a saving bug, added users functionality for select box
+
+= 1.1.8 =
+Fixed a styling issue that was disabling screen options
 
 == Arbitrary section ==
 

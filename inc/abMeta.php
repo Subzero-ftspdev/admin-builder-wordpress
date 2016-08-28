@@ -168,15 +168,15 @@ if (!class_exists('aBMetaClass')) {
         public function meta_callback_function($post, $args)
         {
             ?>
-	<div class="ab"> 
-	       <div class="container-fluid aBMB ">
+	<table class="form-table"> 
+	       <tbody class="aBMB ">
         	    <?php wp_nonce_field(basename(__FILE__), 'aB_nounce_'.$args['args']['name']);
             	foreach ($args['args']['fields'] as $field => $val) {
                	 $this->generate_field($val, $args['args'], $post);
             	}
             	?>
-        	</div>
-	</div>
+		</tbody>
+	</table>
         <?php
 
         }
