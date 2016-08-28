@@ -8,13 +8,14 @@ Stable tag: 1.1.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Generates admin panel functionality for pages & posts, unlimited sortable meta boxes and unlimited sortable fields
+Generates admin panel functionality for pages & posts, unlimited sortable meta boxes, custom post types, pages with tabs, sidebars, rest routes declarations with options and unlimited sortable fields
 
 == Description ==
 
 Service at : http://admin-builder.com
 Admin Builder is a tool that helps developers generate admin panel sections fast and easy. You can create unlimited meta
 boxes with unlimited fields of different types ( textbox, textarea, select, radio buttons, timepicker , datepicker, colorpicker, media upload ) and multiple configurable options for each type. for posts and pages.
+You can also create Unlimited Sidebars, Rest Routes, Admin pages with unlimited tabs, custom post types.
 A few notes about the sections above:
 
 *   All fields types, have , by default  you can configure with a  label and a description. The names of the fields need to be unique so they are managed automatically.
