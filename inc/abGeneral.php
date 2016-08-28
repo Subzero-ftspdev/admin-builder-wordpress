@@ -54,13 +54,14 @@ if (!class_exists('GeneralFunctionality')) {
             $update = false;
             $exists = false; // the settings are entirely new?
             $newArr = array();
+
             if (!empty($dataArr) && is_array($dataArr)) {
                 foreach ($dataArr as $item) {
                     if ($item['name'] == $sName) {
                         $exists = true;
                     }
                 // check if name and version is up to date in the db
-                if ($item['ver'] != $sVersion && $item['name'] == $sName) {
+                if ($item['sett'] != $jsonString && $item['name'] == $sName) {
                     $item['ver'] = $sVersion;
                     $item['sett'] = $jsonString;
                     $update = true;
