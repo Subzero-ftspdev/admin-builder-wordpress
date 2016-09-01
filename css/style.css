@@ -64,7 +64,10 @@ form.abForm img.uploadImage, .aBMB img.uploadImage {
   position: relative;
   margin:20px 0;
   padding:20px;
-  background:#d7d7d7;
+  background:#e4e4e4;
+  -webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
 }
 button.close{
   position: absolute;
@@ -72,13 +75,15 @@ button.close{
   top:0px;
   padding:5px;
   float:right;
-  margin:5px;
+  margin:-11px;
   font-size: 18px;
-  color:#9e1c1c;
+  color:#FFF;
   opacity: 1;
+  background:#9e1c1c;
+
 }
 button.close:hover{
-  background: #9e1c1c;;
+  background: #000;;
   opacity: 1;
   padding:5px;
   color:#FFF;
