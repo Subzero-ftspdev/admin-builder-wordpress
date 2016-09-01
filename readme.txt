@@ -8,7 +8,7 @@ Stable tag: 1.1.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Generates admin panel functionality for pages & posts, unlimited sortable meta boxes, custom post types, pages with tabs, sidebars, rest routes declarations with options and unlimited sortable fields
+Generates Wordpress Admin Panel functionality, modules, sections, metaboxes and fields of different types, easy and fast!
 
 == Description ==
 
