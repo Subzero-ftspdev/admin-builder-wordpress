@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: meta, fields, auto, easy, fast, develop, developers, RAD, build, code, unlimited, service, field
 Requires at least: 4.0
 Tested up to: 4.6
-Stable tag: 1.1.11
+Stable tag: 1.1.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -130,6 +130,8 @@ Re-added bootstrap icons functionality for css
 = 1.1.11 =
 Settings are no longer updated in the database based on plugin/theme version, but are updated based on themselves, if they are different, only then the configured settings change. -> Improvement in UX
 
+= 1.1.12 =
+Added bootstrap Completely, minus the thing that was breaking wordpress style
 == Arbitrary section ==
 
 The plugin does not need any extra method of configuration/installation or any other information
