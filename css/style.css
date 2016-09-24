@@ -2,6 +2,10 @@ body.wp-admin {
     display: inline-table;
     min-width: 100%;
 }
+.aBMB{
+  display: inline-block;
+  width: 100%;
+}
 .aBMB .description {
     display: block;
     margin: 10px 0;
@@ -108,10 +112,12 @@ button.close:hover{
     visibility: hidden !important;
   }
 }
-.ab .container-fluid .row.abList{
+.ab .container-fluid .row.abList,
+.aBMB .row.abList{
   display: inline-block;
     width: 100%;
-    padding: 10px;
+    padding: 10px 14px 10px 10px;
+    margin: 0 -8px 0 -12px;
 }
 .ab .container-fluid .row.abList:nth-child(2n){
   background:#e8e8e8;
