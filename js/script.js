@@ -88,6 +88,14 @@ jQuery(document).ready(function($) {
                 items: {
                     src: '.open-popup-link', // can be a HTML string, jQuery object, or CSS selector
                     type: 'inline'
+                },
+                callbacks: {
+                    open: function() {
+                      $('.mfp-container').addClass('ab');
+                        // Will fire when this exact popup is opened
+                        // this - is Magnific Popup object
+                    },
+                        // e.t.c.
                 }
             });
 

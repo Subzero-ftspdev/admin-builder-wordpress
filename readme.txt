@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: meta, fields, auto, easy, fast, develop, developers, RAD, build, code, unlimited, service, field
 Requires at least: 4.0
 Tested up to: 4.6
-Stable tag: 1.1.14
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -136,7 +136,7 @@ Added bootstrap Completely, minus the thing that was breaking wordpress style
 = 1.1.13 =
 Bootstrap css had only icons styles, nothing else
 
-= 1.1.13 =
+= 1.2 =
 Added complete bootstrap library, compiled manually so it is wrapped around a .ab class, changed styling for admin pages panels, removed jquery ui panels and added bootstrap panel functionality
 
 == Arbitrary section ==

@@ -73,24 +73,29 @@ form.abForm img.uploadImage, .aBMB img.uploadImage {
 -moz-border-radius: 10px;
 border-radius: 10px;
 }
-button.close{
+.ab button.close{
+  font-family: Arial;
   position: absolute;
-  right:0px;
-  top:0px;
+  right:-30px;
+  top:3px;
   padding:5px;
   float:right;
-  margin:-11px;
-  font-size: 18px;
+  margin:2px;
+  font-size: 14px;
+  border:2px solid #b47878;
   color:#FFF;
   opacity: 1;
-  background:#9e1c1c;
+  background:#f03d3d;
 
 }
-button.close:hover{
-  background: #000;;
+.ab button.close:hover{
+  cursor: pointer;
+  background: #000;
   opacity: 1;
   padding:5px;
   color:#FFF;
+  border:2px solid #b47878;
+
 }
 .abPageRow{
   padding:5px;
