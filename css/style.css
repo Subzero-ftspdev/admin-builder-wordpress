@@ -98,9 +98,27 @@ button.close:hover{
 	overflow:hidden;
 	width:100%;
 }
+.ab .nav-tabs{
+  display: inline-block;
+  width: 100%;
+}
 :not(#poststuff) {
   .hidden {
     display: none !important;
     visibility: hidden !important;
   }
+}
+.ab .container-fluid .row.abList{
+  display: inline-block;
+    width: 100%;
+    padding: 10px;
+}
+.ab .container-fluid .row.abList:nth-child(2n){
+  background:#e8e8e8;
+}
+.ab .container-fluid .row.abList:nth-child(2n+1){
+  background:#fff;
+}
+.abForm .container-fluid{
+  padding-top:20px;
 }

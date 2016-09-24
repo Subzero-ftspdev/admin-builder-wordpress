@@ -282,7 +282,7 @@ if (!class_exists('fieldsC')) {
           break;
         }
           ?>
-            <div class="row">
+            <div class="row abList">
               <div class="col-sm-2">
                 <label class="title"><?php _e($label);
           ?></label>
