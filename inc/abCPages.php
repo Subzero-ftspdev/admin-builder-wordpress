@@ -13,8 +13,8 @@ if (!class_exists('aBcPagesClass')) {
   public function __construct($generalArr)
   {
       $this->generalArr = $generalArr;
-// Hook for adding admin menus
-add_action('admin_menu', array($this, 'mt_add_pages'));
+      // Hook for adding admin menus
+      add_action('admin_menu', array($this, 'mt_add_pages'));
   }
 
   // action function for above hook
@@ -103,14 +103,11 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
                   <input type="hidden" name="<?php echo $hiddenFieldName;
                     ?>" value="<?php echo $hiddenFieldValue;
                     ?>" />
-
                   <?php
                   $allValues = $this->loadcPage($hiddenFieldName); //Get all the Values for the fields of this page in one big array
                   if (sizeof($value->children) > 1) {
                       ?>
-                  <div id="abTabs">
-
-                  <ul class="nav nav-tabs">
+                    <ul id="abTabs" class="nav nav-tabs" role="tablist">
                     <?php
 
                   }
@@ -139,6 +136,9 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
                     <?php
                     if (sizeof($value->children) > 1) {
                         ?>
+                        <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-sm-12">
                       <div class="tab-content">
                     <?php
 
@@ -153,7 +153,8 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
                           $tabTitle = (isset($tValue->label)) ? $tValue->label : 'Tab';
                           if (sizeof($value->children) > 1) {
                               ?>
-                          <div role="presentation" class="tab-pane <?php echo $activeClass;
+
+                          <div role="tab-panel" class="tab-pane <?php echo $activeClass;
                               ?>" id="<?php echo $tValue->name;
                               ?>">
                         <?php
@@ -172,6 +173,14 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
                           }
                           if (sizeof($value->children) > 1) {
                               ?>
+
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <p class="submit">
+                    <input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
+                    </p>
+                          </div>
+                        </div>
                         </div>
                           <?php
 
@@ -181,6 +190,9 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
                     if (sizeof($value->children) > 1) {
                         ?>
                   </div>
+                </div>
+              </div>
+            </div>
                     <?php
 
                     }
@@ -188,16 +200,12 @@ add_action('admin_menu', array($this, 'mt_add_pages'));
             }
         }
         ?>
-        <p class="submit">
-<input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
-</p>
+
 
 </form>
 </div>
-</div>
         <?php
 
-
-      }
+    }
     }
 }

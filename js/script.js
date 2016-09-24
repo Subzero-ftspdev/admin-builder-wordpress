@@ -11,7 +11,12 @@ jQuery(document).ready(function($) {
     //
     // cPage tabs
     //
-    abTabs.tabs();
+
+    $('#abTabs a').click(function(e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+
     if (aBDatePicker[0]) {
         //check if datepicker exists as a function
         if (typeof aBDatePicker.datepicker == 'function') {
@@ -78,7 +83,7 @@ jQuery(document).ready(function($) {
     var magnicPopObj = $.magnificPopup.instance;
     if (abBootstrapIcons[0]) {
         abBootstrapIcons.click(function() {
-          clickedIconButton = $(this);
+            clickedIconButton = $(this);
             magnicPopObj.open({
                 items: {
                     src: '.open-popup-link', // can be a HTML string, jQuery object, or CSS selector
@@ -88,73 +93,74 @@ jQuery(document).ready(function($) {
 
         });
     }
-    if(abMagnificPopupContent[0]){
-      abMagnificPopupContent.find('button').click(function(){
-        var classes = $(this).children('i').attr('class').split(" ");
-        var index = classes.indexOf("glyphicon");
-         classes.splice(index, 1);
+    if (abMagnificPopupContent[0]) {
+        abMagnificPopupContent.find('button').click(function() {
+            var classes = $(this).children('i').attr('class').split(" ");
+            var index = classes.indexOf("glyphicon");
+            classes.splice(index, 1);
 
-         clickedIconButton.html('<i class="glyphicon"></i>');
-         var clickedIconButtonI = clickedIconButton.children('i');
+            clickedIconButton.html('<i class="glyphicon"></i>');
+            var clickedIconButtonI = clickedIconButton.children('i');
 
-         clickedIconButtonI.addClass(classes[0]);
-        magnicPopObj.close();
-        clickedIconButton.siblings('.abBIHidden').val(classes[0]);
-      });
+            clickedIconButtonI.addClass(classes[0]);
+            magnicPopObj.close();
+            clickedIconButton.siblings('.abBIHidden').val(classes[0]);
+        });
     }
 
     // textboxesDynamic functionality START
     var tbdAdd = $('.tbdAdd'); //add row button
-    if(tbdAdd[0]){
-      tbdAdd.click(function(){
-        var tbdContent = $(this).parent().siblings('.tbdContent');
-        var tdOutput = $(this).parent().siblings('.tdOutput');
-        tbdContentHTML = tbdContent.html();
-        //get the number of dynamic field groups added
-        var size = tdOutput.find('.groupContainer').size();
+    if (tbdAdd[0]) {
+        tbdAdd.click(function() {
+            var tbdContent = $(this).parent().siblings('.tbdContent');
+            var tdOutput = $(this).parent().siblings('.tdOutput');
+            tbdContentHTML = tbdContent.html();
+            //get the number of dynamic field groups added
+            var size = tdOutput.find('.groupContainer').size();
 
-        var tbdContentHTMLObj = $('<div>'+tbdContentHTML+'</div>');
+            var tbdContentHTMLObj = $('<div>' + tbdContentHTML + '</div>');
 
-        //get all the inputs of the hidden html
-        var dtContInputs = tbdContentHTMLObj.find('input');
-        //for each input
-        dtContInputs.each(function(index,i){
-          var thisInput = $(this);
-          var inputAttr = thisInput.attr('dtArrName');
-          if(inputAttr[0]){
-            var thisInputName = thisInput.attr('origName');
-            var newInputName = thisInputName+'['+size+']['+inputAttr+']';
-            //set the new name to the input
-            thisInput.attr('name',newInputName);
-          }
+            //get all the inputs of the hidden html
+            var dtContInputs = tbdContentHTMLObj.find('input');
+            //for each input
+            dtContInputs.each(function(index, i) {
+                var thisInput = $(this);
+                var inputAttr = thisInput.attr('dtArrName');
+                if (inputAttr[0]) {
+                    var thisInputName = thisInput.attr('origName');
+                    var newInputName = thisInputName + '[' + size + '][' + inputAttr + ']';
+                    //set the new name to the input
+                    thisInput.attr('name', newInputName);
+                }
+            });
+            // console.log(size);
+            tbdContentHTML = tbdContentHTMLObj.html();
+            tdOutput.append(tbdContentHTML);
         });
-        // console.log(size);
-        tbdContentHTML = tbdContentHTMLObj.html();
-        tdOutput.append(tbdContentHTML);
-      });
     }
     // close button for dynamic fields containers
     var dtClose = $('.groupContainer button.close');
-    if(dtClose[0]){
-      dtClose.live('click',function(){
-        var cThis = $(this);//current this
-        var cc = cThis.parent().parent();
-        cThis.parent().remove();
-        dtGenerateNames(cc);
+    if (dtClose[0]) {
+        dtClose.live('click', function() {
+            var cThis = $(this); //current this
+            var cc = cThis.parent().parent();
+            cThis.parent().remove();
+            dtGenerateNames(cc);
 
-      });
-    }
-    function dtGenerateNames(parObj){
-      var groupContainers = parObj.find('.groupContainer');
-      groupContainers.each(function(cIndex,i){
-        var gcThis = $(this);
-        var inputs = gcThis.find('input');
-        inputs.each(function(iIndex,i){
-          var iThis = $(this); //this input
-          var origName = iThis.attr('origName');
-          var dtArrName = iThis.attr('dtArrName');
-          iThis.attr('name',origName+'['+cIndex+']['+dtArrName+']');
         });
-      });
+    }
+
+    function dtGenerateNames(parObj) {
+        var groupContainers = parObj.find('.groupContainer');
+        groupContainers.each(function(cIndex, i) {
+            var gcThis = $(this);
+            var inputs = gcThis.find('input');
+            inputs.each(function(iIndex, i) {
+                var iThis = $(this); //this input
+                var origName = iThis.attr('origName');
+                var dtArrName = iThis.attr('dtArrName');
+                iThis.attr('name', origName + '[' + cIndex + '][' + dtArrName + ']');
+            });
+        });
     }
 });
