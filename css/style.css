@@ -130,6 +130,3 @@ border-radius: 10px;
 .ab .container-fluid .row.abList:nth-child(2n+1){
   background:#fff;
 }
-.abForm .container-fluid{
-  padding-top:20px;
-}
