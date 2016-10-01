@@ -22,8 +22,8 @@ if (!class_exists('GeneralFunctionality')) {
                     //version
                     $dataArrSettings = $dataArr['sett'];
 
-                    $data = stripslashes($dataArrSettings);
-                    $dataArrSettings = json_decode($data);
+                    // $dataArrSettings = stripslashes($dataArrSettings);
+                    $dataArrSettings = json_decode($dataArrSettings);
                     // $this->showArr($dataArrSettings);
                   # code...
                   // meta boxes functionality
@@ -36,6 +36,8 @@ if (!class_exists('GeneralFunctionality')) {
                   new abSidebars($dataArrSettings);
                   // custom rest api routes Class
                   new abRoutes($dataArrSettings);
+                  //customizer management Class
+                  new aBCustomizerClass($dataArrSettings);
 
                 }
             }

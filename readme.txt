@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: meta, fields, auto, easy, fast, develop, developers, RAD, build, code, unlimited, service, field
 Requires at least: 4.0
 Tested up to: 4.6
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,95 +49,103 @@ Go to http://admin-builder.com and create metaboxes with fields for posts. Go to
 * Another change.
 
 = 1.0.0.1 =
-Changed service link
+* Changed service link
 
 = 1.0.0.2 =
-Changed service link
+* Changed service link
 
 = 1.0.0.3 =
-Styled textarea in admin panel + styled import button
+* Styled textarea in admin panel + styled import button
 
 = 1.0.1 =
-Added custom post types generation features from json
-Stripped slasshes on json import
+* Added custom post types generation features from json
+* Stripped slasshes on json import
 
 = 1.0.2 =
-Added support for generating pages
+* Added support for generating pages
 
 = 1.0.2.2 =
-Export file changed, and it's interpretation
+* Export file changed, and it's interpretation
 
 = 1.0.2.3 =
-Updated plugin info text
+* Updated plugin info text
 
 = 1.0.2.4 =
-Plugin now works with service export properly and with code examples
+* Plugin now works with service export properly and with code examples
 
 = 1.0.2.5 =
-Updated style for label.description
+* Updated style for label.description
 
 = 1.0.2.6 =
-Added image support for signatures
+* Added image support for signatures
 
 = 1.0.2.7 =
-Styled the posts meta box for image uploads better
+* Styled the posts meta box for image uploads better
 
 = 1.0.2.8 =
-Fixed a wordpress layout bug
+* Fixed a wordpress layout bug
 
 = 1.0.2.9 =
-Custom page 1 field saving bug fixed
+* Custom page 1 field saving bug fixed
 
 = 1.0.2.10 =
-Added Bootstrap Icons Field type Functionality
+* Added Bootstrap Icons Field type Functionality
 
 = 1.0.4 =
- Added database loading/generating functionality
+ * Added database loading/generating functionality
 
 = 1.1 =
-Interpreting new export functionality for themes and plugins, integrated into the plugin.
+* Interpreting new export functionality for themes and plugins, integrated into the plugin.
 
 = 1.1.1 =
-Added Dynamic Textboxes functionality for custom post types and admin pages. You can create unlimited dynamic text boxes of unlimited dynamic text boxes now.
+* Added Dynamic Textboxes functionality for custom post types and admin pages. You can create unlimited dynamic text boxes of unlimited dynamic text boxes now.
 
 = 1.1.2 =
-Styled and Completed the admin page HTML & SCSS structure better.
+* Styled and Completed the admin page HTML & SCSS structure better.
 
 = 1.1.3 =
-The ability to manage active settings from the database has been introduced. There's a new administration panel page called Admin Builder that allows you to delete any Plugin or Theme related Setting from the database that you are not usin.
+* The ability to manage active settings from the database has been introduced. There's a new administration panel page called Admin Builder that allows you to delete any Plugin or Theme related Setting from the database that you are not usin.
 
 = 1.1.4 =
-Added Rest Api routes functionality with the
+* Added Rest Api routes functionality with the
 
 = 1.1.5 =
-Added routes php file ... missed in the previous version update
+* Added routes php file ... missed in the previous version update
 
 = 1.1.6 =
-Fixed a bug in the routes functionality where post was not being generated, just GET
+* Fixed a bug in the routes functionality where post was not being generated, just GET
 
 = 1.1.6 =
 Fixed a saving bug, added users functionality for select box
 
 = 1.1.8 =
-Fixed a styling issue that was disabling screen options
+* Fixed a styling issue that was disabling screen options
 
 = 1.1.9 =
-Removed bootstrap css
+* Removed bootstrap css
 
 = 1.1.10 =
-Re-added bootstrap icons functionality for css
+* Re-added bootstrap icons functionality for css
 
 = 1.1.11 =
-Settings are no longer updated in the database based on plugin/theme version, but are updated based on themselves, if they are different, only then the configured settings change. -> Improvement in UX
+* Settings are no longer updated in the database based on plugin/theme version, but are updated based on themselves, if they are different, only then the configured settings change. -> Improvement in UX
 
 = 1.1.12 =
-Added bootstrap Completely, minus the thing that was breaking wordpress style
+* Added bootstrap Completely, minus the thing that was breaking wordpress style
 
 = 1.1.13 =
-Bootstrap css had only icons styles, nothing else
+* Bootstrap css had only icons styles, nothing else
 
 = 1.2 =
-Added complete bootstrap library, compiled manually so it is wrapped around a .ab class, changed styling for admin pages panels, removed jquery ui panels and added bootstrap panel functionality
+* Added complete bootstrap library, compiled manually so it is wrapped around a .ab class, changed styling for admin pages panels, removed jquery ui panels and added bootstrap panel functionality
+
+= 1.2.1 =
+* Support for single and double quotes in settings text
+
+= 1.3 =
+* Appearance customizer support
+* Taxonomy support
+* Dashboard widgets support
 
 == Arbitrary section ==
 

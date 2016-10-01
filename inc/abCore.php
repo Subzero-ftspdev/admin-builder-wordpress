@@ -13,6 +13,8 @@ require_once 'abCPages.php';
 require_once 'abSidebars.php';
 //rest api routes
 require_once 'abRoutes.php';
+//customizer api
+require_once 'abCustomizer.php';
 //Plugin functionality
 require_once 'ab.php';
 
