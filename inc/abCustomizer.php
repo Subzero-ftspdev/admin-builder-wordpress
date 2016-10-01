@@ -14,11 +14,11 @@ if (!class_exists('aBCustomizerClass')) {
     {
         if (isset($CustomizerArr)) {
             $CustomizerArr = $this->processArray($CustomizerArr);
-            $this->gametaboxesArr = $CustomizerArr;
+            $this->$CustomizerArr = $CustomizerArr;
         }
         if (isset($CustomizerArr)) {
-            //generate all the metaboxes
-            add_action('add_meta_boxes', array($this, 'abAddMetaBox'));
+            // customizer register
+            add_action('customize_register', array($this, 'abCustomizeRegister'));
             //save the metabox data
             add_action('save_post', array($this, 'save_metaBox_fields'), 10, 2);
         }
@@ -67,7 +67,7 @@ if (!class_exists('aBCustomizerClass')) {
             return $newArr;
         }
 
-        public function abAddMetaBox()
+        public function abCustomizeRegister()
         {
             $metaArr = $this->gametaboxesArr;
         // $aBGeneral = new GeneralFunctionality();
