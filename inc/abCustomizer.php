@@ -14,7 +14,7 @@ if (!class_exists('aBCustomizerClass')) {
     {
         if (isset($CustomizerArr)) {
             $CustomizerArr = $this->processArray($CustomizerArr);
-            $this->$CustomizerArr = $CustomizerArr;
+            $this->CustomizerArr = $CustomizerArr;
         }
         if (isset($CustomizerArr)) {
             // customizer register
@@ -26,6 +26,7 @@ if (!class_exists('aBCustomizerClass')) {
 
         private function processArray($data)
         {
+            global $abGen;
             //
         // Declaring a brand new array outside the loop
         //
@@ -35,6 +36,11 @@ if (!class_exists('aBCustomizerClass')) {
             foreach ($value->children as $key2 => $value2) {
                 //set the type from array
                 $type = $value->type;
+                // $type === 'customizer'
+                if ($type!=='customizer'){
+                  continue;
+                }
+                // $abGen->showArr($value2);
                 // initialize temporary fields
                 $tempFields = array();
                 // Loop Fields
@@ -69,9 +75,9 @@ if (!class_exists('aBCustomizerClass')) {
 
         public function abCustomizeRegister()
         {
-            $metaArr = $this->gametaboxesArr;
-        // $aBGeneral = new GeneralFunctionality();
-        // $aBGeneral->showArr($metaArr);
+            $metaArr = $this->CustomizerArr;
+        $aBGeneral = new GeneralFunctionality();
+        $aBGeneral->showArr($metaArr);
 
         $id = 'aB_';
             $title = 'Default Title';
