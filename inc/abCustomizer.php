@@ -36,9 +36,8 @@ if (!class_exists('aBCustomizerClass')) {
             foreach ($value->children as $key2 => $value2) {
                 //set the type from array
                 $type = $value->type;
-                // $type === 'customizer'
-                if ($type!=='customizer'){
-                  continue;
+                if ($type !== 'customizer') {
+                    continue;
                 }
                 // $abGen->showArr($value2);
                 // initialize temporary fields
@@ -61,14 +60,12 @@ if (!class_exists('aBCustomizerClass')) {
                     'name' => $value2->name,
                     'label' => $value2->label,
                     'type' => $type,
-                    'cpt_name' => $value->name,
-                    'callbackArgs' => array('fields'),
                     'fields' => $tempFields,
                     'context' => $context,
                     'priority' => $priority,
                 );
             }
-            }
+          }
 
             return $newArr;
         }
@@ -76,10 +73,10 @@ if (!class_exists('aBCustomizerClass')) {
         public function abCustomizeRegister()
         {
             $metaArr = $this->CustomizerArr;
-        $aBGeneral = new GeneralFunctionality();
-        $aBGeneral->showArr($metaArr);
+            $aBGeneral = new GeneralFunctionality();
 
-        $id = 'aB_';
+
+            $id = 'aB_';
             $title = 'Default Title';
             $context = 'advanced';
             $priority = 'default';
@@ -87,13 +84,13 @@ if (!class_exists('aBCustomizerClass')) {
             if (!empty($metaArr)) {
                 foreach ($metaArr as $count => $box) {
                     $name = $box['name'] ? $box['name'] : 'defName';
-                    $type = $box['type'] ? $box['type'] : 'post';
-                    $cpt_name = 'post';
-                    if ($type === 'cpt' && isset($box['cpt_name'])) {
-                        $cpt_name = $box['cpt_name'];
-                    } else {
-                        $cpt_name = $box['type'];
+                    $type = $box['type'] ? $box['type'] : 'customizer';
+                    if($type!=='customizer'){
+                      exit;
                     }
+
+                    $aBGeneral->showArr($metaArr);
+
                     $context = $box['context'] ? $box['context'] : $context;
                     $priority = $box['priority'] ? $box['priority'] : $priority;
                     $id = $name.$count;
@@ -105,7 +102,7 @@ if (!class_exists('aBCustomizerClass')) {
                     }
 
                     $callback_args = $box['callbackArgs'] ? array('name' => $box['name'], 'fields' => $box['fields']) : null;
-                    add_meta_box($id, $title, array($this, 'meta_callback_function'), $cpt_name, $context, $priority, $callback_args);
+                    // add_meta_box($id, $title, array($this, 'meta_callback_function'), $cpt_name, $context, $priority, $callback_args);
                 }
             }
         }
