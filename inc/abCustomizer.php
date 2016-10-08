@@ -78,41 +78,40 @@ if (!class_exists('aBCustomizerClass')) {
             if (!empty($metaArr)) {
                 foreach ($metaArr as $count => $box) {
                     $panelName = $box['name'] ? $box['name'] : 'No Name';
+
                     $type = $box['type'] ? $box['type'] : 'customizer';
                     if ($type !== 'customizer') {
                         exit;
                     }
 
-                    // $aBGeneral->showArr($metaArr);
                     //$metaArr[0]['fields']
-                    foreach($metaArr[0]['fields'] as $panel){
-                      $fieldName = $panel['label'] ? $panel['label'] : 'No Name';
 
-                      $id = $fieldName.$count;
-                      if (isset($box['label'])) {
-                          $title = $box['label'] ? $box['label'] : $title;
-                      }
+                    $id = $panelName.$count;
 
-                      $wp_customize->add_setting('settingID'.$id, array(
-                        'default' => '',
-                        'transport' => 'refresh',
-                      ));
-                      $wp_customize->add_section('sectionID'.$id, array(
-                        'title' => __($panelName, 'default'),
-                        'priority' => 30
-                      ));
-                      $wp_customize->add_control(new WP_Customize_Control($wp_customize, $id, array(
-                        'label' => __($fieldName, 'default'),
+                    $wp_customize->add_section('sectionID'.$id, array(
+                      'title' => __($panelName, 'default'),
+                      'priority' => 30,
+                    ));
+
+                    foreach ($metaArr[0]['fields'] as $panel) {
+                        // $aBGeneral->showArr($panel);
+                      $fieldName = $panel['name'] ? $panel['name'] : 'No Name';
+                        $fieldType = $panel['type'] ? $panel['type'] : 'text';
+                        $fieldLabel = $panel['label'] ? $panel['label'] : 'No Label';
+
+                        //setting
+                        $wp_customize->add_setting($fieldName.$id, array(
+                          'default' => '',
+                          'transport' => 'refresh',
+                        ));
+
+                      // Control field:
+                      $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
+                      array('label' => __($fieldLabel, 'default'),
                         'section' => 'sectionID'.$id,
-                        'settings' => 'settingID'.$id
+                        'settings' => $fieldName.$id,
                       )));
-
                     }
-
-
-
-                    // $callback_args = $box['callbackArgs'] ? array('name' => $box['name'], 'fields' => $box['fields']) : null;
-                    // add_meta_box($id, $title, array($this, 'meta_callback_function'), $cpt_name, $context, $priority, $callback_args);
                 }
             }
         }
