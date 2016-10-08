@@ -63,36 +63,54 @@ if (!class_exists('aBCustomizerClass')) {
                     'fields' => $tempFields,
                 );
             }
-          }
+            }
 
             return $newArr;
         }
 
-        public function abCustomizeRegister()
+        public function abCustomizeRegister($wp_customize)
         {
             $metaArr = $this->CustomizerArr;
             $aBGeneral = new GeneralFunctionality();
 
-
             $id = 'aB_';
             $title = 'Default Title';
-            $context = 'advanced';
-            $priority = 'default';
-            $callback_args = null;
             if (!empty($metaArr)) {
                 foreach ($metaArr as $count => $box) {
-                    $name = $box['name'] ? $box['name'] : 'defName';
+                    $panelName = $box['name'] ? $box['name'] : 'No Name';
                     $type = $box['type'] ? $box['type'] : 'customizer';
-                    if($type!=='customizer'){
-                      exit;
+                    if ($type !== 'customizer') {
+                        exit;
                     }
 
                     // $aBGeneral->showArr($metaArr);
+                    //$metaArr[0]['fields']
+                    foreach($metaArr[0]['fields'] as $panel){
+                      $fieldName = $panel['label'] ? $panel['label'] : 'No Name';
 
-                    $id = $name.$count;
-                    if (isset($box['label'])) {
-                        $title = $box['label'] ? $box['label'] : $title;
+                      $id = $fieldName.$count;
+                      if (isset($box['label'])) {
+                          $title = $box['label'] ? $box['label'] : $title;
+                      }
+
+                      $wp_customize->add_setting('settingID'.$id, array(
+                        'default' => '',
+                        'transport' => 'refresh',
+                      ));
+                      $wp_customize->add_section('sectionID'.$id, array(
+                        'title' => __($panelName, 'default'),
+                        'priority' => 30
+                      ));
+                      $wp_customize->add_control(new WP_Customize_Control($wp_customize, $id, array(
+                        'label' => __($fieldName, 'default'),
+                        'section' => 'sectionID'.$id,
+                        'settings' => 'settingID'.$id
+                      )));
+
                     }
+
+
+
                     // $callback_args = $box['callbackArgs'] ? array('name' => $box['name'], 'fields' => $box['fields']) : null;
                     // add_meta_box($id, $title, array($this, 'meta_callback_function'), $cpt_name, $context, $priority, $callback_args);
                 }
