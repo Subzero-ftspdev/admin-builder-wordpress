@@ -61,8 +61,6 @@ if (!class_exists('aBCustomizerClass')) {
                     'label' => $value2->label,
                     'type' => $type,
                     'fields' => $tempFields,
-                    'context' => $context,
-                    'priority' => $priority,
                 );
             }
           }
@@ -89,19 +87,13 @@ if (!class_exists('aBCustomizerClass')) {
                       exit;
                     }
 
-                    $aBGeneral->showArr($metaArr);
+                    // $aBGeneral->showArr($metaArr);
 
-                    $context = $box['context'] ? $box['context'] : $context;
-                    $priority = $box['priority'] ? $box['priority'] : $priority;
                     $id = $name.$count;
                     if (isset($box['label'])) {
                         $title = $box['label'] ? $box['label'] : $title;
                     }
-                    if (isset($box['priority'])) {
-                        $priority = $box['priority'] ? $box['priority'] : 'default';
-                    }
-
-                    $callback_args = $box['callbackArgs'] ? array('name' => $box['name'], 'fields' => $box['fields']) : null;
+                    // $callback_args = $box['callbackArgs'] ? array('name' => $box['name'], 'fields' => $box['fields']) : null;
                     // add_meta_box($id, $title, array($this, 'meta_callback_function'), $cpt_name, $context, $priority, $callback_args);
                 }
             }
