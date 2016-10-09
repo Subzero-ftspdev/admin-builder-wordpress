@@ -98,6 +98,7 @@ if (!class_exists('aBCustomizerClass')) {
                       $fieldName = $panel['name'] ? $panel['name'] : 'No Name';
                         $fieldType = $panel['type'] ? $panel['type'] : 'text';
                         $fieldLabel = $panel['label'] ? $panel['label'] : 'No Label';
+                        $fieldDescription = $panel['description'] ? $panel['description'] : 'No Label';
 
                         //setting
                         $wp_customize->add_setting($fieldName.$id, array(
@@ -112,6 +113,7 @@ if (!class_exists('aBCustomizerClass')) {
                           array('label' => __($fieldLabel, 'default'),
                             'section' => 'sectionID'.$id,
                             'settings' => $fieldName.$id,
+                            'description' => $fieldDescription,
                           )));
                         break;
                         case 'color':
@@ -119,6 +121,7 @@ if (!class_exists('aBCustomizerClass')) {
                           array('label' => __($fieldLabel, 'default'),
                             'section' => 'sectionID'.$id,
                             'settings' => $fieldName.$id,
+                            'description' => $fieldDescription,
                           )));
                         break;
                         case 'upload':
@@ -126,6 +129,7 @@ if (!class_exists('aBCustomizerClass')) {
                           array('label' => __($fieldLabel, 'default'),
                             'section' => 'sectionID'.$id,
                             'settings' => $fieldName.$id,
+                            'description' => $fieldDescription,
                           )));
                         break;
                         case 'textarea':
@@ -134,6 +138,7 @@ if (!class_exists('aBCustomizerClass')) {
                             'section' => 'sectionID'.$id,
                             'settings' => $fieldName.$id,
                             'type' => 'textarea',
+                            'description' => $fieldDescription,
                           )));
                         break;
                         case 'dropdown-pages':
@@ -142,6 +147,7 @@ if (!class_exists('aBCustomizerClass')) {
                             'section' => 'sectionID'.$id,
                             'settings' => $fieldName.$id,
                             'type' => 'dropdown-pages',
+                            'description' => $fieldDescription,
                           )));
                         break;
                         // case 'image':
