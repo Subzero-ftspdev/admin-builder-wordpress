@@ -128,6 +128,14 @@ if (!class_exists('aBCustomizerClass')) {
                             'settings' => $fieldName.$id,
                           )));
                         break;
+                        case 'textarea':
+                          $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
+                          array('label' => __($fieldLabel, 'default'),
+                            'section' => 'sectionID'.$id,
+                            'settings' => $fieldName.$id,
+                            'type' => 'textarea',
+                          )));
+                        break;
                         // case 'image':
                         //   $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, $fieldName,
                         //   array('label' => __($fieldLabel, 'default'),
