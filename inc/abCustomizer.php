@@ -106,7 +106,7 @@ if (!class_exists('aBCustomizerClass')) {
                         ));
 
                       // Control field:
-                      switch ($type) {
+                      switch ($fieldType) {
                         case 'text':
                           $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
                           array('label' => __($fieldLabel, 'default'),
@@ -128,27 +128,27 @@ if (!class_exists('aBCustomizerClass')) {
                             'settings' => $fieldName.$id,
                           )));
                         break;
-                        case 'image':
-                          $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, $fieldName,
-                          array('label' => __($fieldLabel, 'default'),
-                            'section' => 'sectionID'.$id,
-                            'settings' => $fieldName.$id,
-                          )));
-                        break;
-                        case 'background_image':
-                          $wp_customize->add_control(new WP_Customize_Background_Image_Control($wp_customize, $fieldName,
-                          array('label' => __($fieldLabel, 'default'),
-                            'section' => 'sectionID'.$id,
-                            'settings' => $fieldName.$id,
-                          )));
-                        break;
-                        case 'header_image':
-                          $wp_customize->add_control(new WP_Customize_Header_Image_Control($wp_customize, $fieldName,
-                          array('label' => __($fieldLabel, 'default'),
-                            'section' => 'sectionID'.$id,
-                            'settings' => $fieldName.$id,
-                          )));
-                        break;
+                        // case 'image':
+                        //   $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, $fieldName,
+                        //   array('label' => __($fieldLabel, 'default'),
+                        //     'section' => 'sectionID'.$id,
+                        //     'settings' => $fieldName.$id,
+                        //   )));
+                        // break;
+                        // case 'background_image':
+                        //   $wp_customize->add_control(new WP_Customize_Background_Image_Control($wp_customize, $fieldName,
+                        //   array('label' => __($fieldLabel, 'default'),
+                        //     'section' => 'sectionID'.$id,
+                        //     'settings' => $fieldName.$id,
+                        //   )));
+                        // break;
+                        // case 'header_image':
+                        //   $wp_customize->add_control(new WP_Customize_Header_Image_Control($wp_customize, $fieldName,
+                        //   array('label' => __($fieldLabel, 'default'),
+                        //     'section' => 'sectionID'.$id,
+                        //     'settings' => $fieldName.$id,
+                        //   )));
+                        // break;
                       }
                     }
                 }
