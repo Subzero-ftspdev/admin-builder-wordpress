@@ -92,87 +92,91 @@ if (!class_exists('aBCustomizerClass')) {
                       'title' => __($panelName, 'default'),
                       'priority' => 30,
                     ));
+                    // 2 levels or one
+                    foreach($metaArr as $panelFields){
+                      $twoLev= count($panelFields)===1 ? true : false ;
+                      foreach ($panelFields['fields'] as $panel) {
+                          // $aBGeneral->showArr($panel);
+                        $fieldName = $panel['name'] ? $panel['name'] : 'No Name';
+                          $fieldType = $panel['type'] ? $panel['type'] : 'text';
+                          $fieldLabel = $panel['label'] ? $panel['label'] : 'No Label';
+                          $fieldDescription = $panel['description'] ? $panel['description'] : 'No Description';
 
-                    foreach ($metaArr[0]['fields'] as $panel) {
-                        // $aBGeneral->showArr($panel);
-                      $fieldName = $panel['name'] ? $panel['name'] : 'No Name';
-                        $fieldType = $panel['type'] ? $panel['type'] : 'text';
-                        $fieldLabel = $panel['label'] ? $panel['label'] : 'No Label';
-                        $fieldDescription = $panel['description'] ? $panel['description'] : 'No Label';
+                          //setting
+                          $wp_customize->add_setting($fieldName.$id, array(
+                            'default' => '',
+                            'transport' => 'refresh',
+                          ));
 
-                        //setting
-                        $wp_customize->add_setting($fieldName.$id, array(
-                          'default' => '',
-                          'transport' => 'refresh',
-                        ));
-
-                      // Control field:
-                      switch ($fieldType) {
-                        case 'text':
-                          $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
-                          array('label' => __($fieldLabel, 'default'),
-                            'section' => 'sectionID'.$id,
-                            'settings' => $fieldName.$id,
-                            'description' => $fieldDescription,
-                          )));
-                        break;
-                        case 'color':
-                          $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $fieldName,
-                          array('label' => __($fieldLabel, 'default'),
-                            'section' => 'sectionID'.$id,
-                            'settings' => $fieldName.$id,
-                            'description' => $fieldDescription,
-                          )));
-                        break;
-                        case 'upload':
-                          $wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize, $fieldName,
-                          array('label' => __($fieldLabel, 'default'),
-                            'section' => 'sectionID'.$id,
-                            'settings' => $fieldName.$id,
-                            'description' => $fieldDescription,
-                          )));
-                        break;
-                        case 'textarea':
-                          $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
-                          array('label' => __($fieldLabel, 'default'),
-                            'section' => 'sectionID'.$id,
-                            'settings' => $fieldName.$id,
-                            'type' => 'textarea',
-                            'description' => $fieldDescription,
-                          )));
-                        break;
-                        case 'dropdown-pages':
-                          $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
-                          array('label' => __($fieldLabel, 'default'),
-                            'section' => 'sectionID'.$id,
-                            'settings' => $fieldName.$id,
-                            'type' => 'dropdown-pages',
-                            'description' => $fieldDescription,
-                          )));
-                        break;
-                        // case 'image':
-                        //   $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, $fieldName,
-                        //   array('label' => __($fieldLabel, 'default'),
-                        //     'section' => 'sectionID'.$id,
-                        //     'settings' => $fieldName.$id,
-                        //   )));
-                        // break;
-                        // case 'background_image':
-                        //   $wp_customize->add_control(new WP_Customize_Background_Image_Control($wp_customize, $fieldName,
-                        //   array('label' => __($fieldLabel, 'default'),
-                        //     'section' => 'sectionID'.$id,
-                        //     'settings' => $fieldName.$id,
-                        //   )));
-                        // break;
-                        // case 'header_image':
-                        //   $wp_customize->add_control(new WP_Customize_Header_Image_Control($wp_customize, $fieldName,
-                        //   array('label' => __($fieldLabel, 'default'),
-                        //     'section' => 'sectionID'.$id,
-                        //     'settings' => $fieldName.$id,
-                        //   )));
-                        // break;
+                        // Control field:
+                        switch ($fieldType) {
+                          case 'text':
+                            $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
+                            array('label' => __($fieldLabel, 'default'),
+                              'section' => 'sectionID'.$id,
+                              'settings' => $fieldName.$id,
+                              'description' => $fieldDescription,
+                            )));
+                          break;
+                          case 'color':
+                            $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $fieldName,
+                            array('label' => __($fieldLabel, 'default'),
+                              'section' => 'sectionID'.$id,
+                              'settings' => $fieldName.$id,
+                              'description' => $fieldDescription,
+                            )));
+                          break;
+                          case 'upload':
+                            $wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize, $fieldName,
+                            array('label' => __($fieldLabel, 'default'),
+                              'section' => 'sectionID'.$id,
+                              'settings' => $fieldName.$id,
+                              'description' => $fieldDescription,
+                            )));
+                          break;
+                          case 'textarea':
+                            $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
+                            array('label' => __($fieldLabel, 'default'),
+                              'section' => 'sectionID'.$id,
+                              'settings' => $fieldName.$id,
+                              'type' => 'textarea',
+                              'description' => $fieldDescription,
+                            )));
+                          break;
+                          case 'dropdown-pages':
+                            $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
+                            array('label' => __($fieldLabel, 'default'),
+                              'section' => 'sectionID'.$id,
+                              'settings' => $fieldName.$id,
+                              'type' => 'dropdown-pages',
+                              'description' => $fieldDescription,
+                            )));
+                          break;
+                          // case 'image':
+                          //   $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, $fieldName,
+                          //   array('label' => __($fieldLabel, 'default'),
+                          //     'section' => 'sectionID'.$id,
+                          //     'settings' => $fieldName.$id,
+                          //   )));
+                          // break;
+                          // case 'background_image':
+                          //   $wp_customize->add_control(new WP_Customize_Background_Image_Control($wp_customize, $fieldName,
+                          //   array('label' => __($fieldLabel, 'default'),
+                          //     'section' => 'sectionID'.$id,
+                          //     'settings' => $fieldName.$id,
+                          //   )));
+                          // break;
+                          // case 'header_image':
+                          //   $wp_customize->add_control(new WP_Customize_Header_Image_Control($wp_customize, $fieldName,
+                          //   array('label' => __($fieldLabel, 'default'),
+                          //     'section' => 'sectionID'.$id,
+                          //     'settings' => $fieldName.$id,
+                          //   )));
+                          // break;
+                        }
                       }
                     }
+
                 }
             }
         }
