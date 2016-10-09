@@ -94,13 +94,13 @@ if (!class_exists('aBCustomizerClass')) {
                     ));
                     // 2 levels or one
                     foreach($metaArr as $panelFields){
-                      $twoLev= count($panelFields)===1 ? true : false ;
+                      $twoLev = (count($panelFields) === 1 ? true : false) ;
                       foreach ($panelFields['fields'] as $panel) {
                           // $aBGeneral->showArr($panel);
-                        $fieldName = $panel['name'] ? $panel['name'] : 'No Name';
-                          $fieldType = $panel['type'] ? $panel['type'] : 'text';
-                          $fieldLabel = $panel['label'] ? $panel['label'] : 'No Label';
-                          $fieldDescription = $panel['description'] ? $panel['description'] : 'No Description';
+                        $fieldName = (isset($panel['name']) ? $panel['name'] : 'No Name');
+                          $fieldType = (isset($panel['type']) ? $panel['type'] : 'text');
+                          $fieldLabel = (isset($panel['label']) ? $panel['label'] : 'No Label');
+                          $fieldDescription = (isset($panel['description']) ? $panel['description'] : 'No Description');
 
                           //setting
                           $wp_customize->add_setting($fieldName.$id, array(
