@@ -31,14 +31,14 @@ if (!class_exists('aBCustomizerClass')) {
         // Declaring a brand new array outside the loop
         //
         $newArr = array();
+
             foreach ($data->menus as $key => $value) {
-                // $aBGeneral->showArr($value);
-            foreach ($value->children as $key2 => $value2) {
-                //set the type from array
+                foreach ($value->children as $key2 => $value2) {
+                    //set the type from array
                 $type = $value->type;
-                if ($type !== 'customizer') {
-                    continue;
-                }
+                    if ($type !== 'customizer') {
+                        continue;
+                    }
                 // $abGen->showArr($value2);
                 // initialize temporary fields
                 $tempFields = array();
@@ -47,22 +47,16 @@ if (!class_exists('aBCustomizerClass')) {
                     $tFValue = (array) $tFValue;
                     $tempFields[] = $tFValue;
                 }
-                $context = '';
-                $priority = '';
-                if (isset($value2->context)) {
-                    $context = $value2->context;
-                }
-                if (isset($value2->priority)) {
-                    $priority = $value2->priority;
-                }
+                    $context = '';
+                    $priority = '';
                 //new metabox added to array
                 $newArr[] = array(
-                    'name' => $value2->name,
-                    'label' => $value2->label,
+                    'name' => $value->name,
+                    'label' => $value->label,
                     'type' => $type,
                     'fields' => $tempFields,
                 );
-            }
+                }
             }
 
             return $newArr;
@@ -76,34 +70,35 @@ if (!class_exists('aBCustomizerClass')) {
             $id = 'aB_';
             $title = 'Default Title';
             if (!empty($metaArr)) {
-                foreach ($metaArr as $count => $box) {
+                $count = 0;
+                foreach ($metaArr as $key => $box) {
                     $panelName = $box['name'] ? $box['name'] : 'No Name';
-
+                    $panelLabel = $box['label'] ? $box['label'] : 'No Label';
                     $type = $box['type'] ? $box['type'] : 'customizer';
+
                     if ($type !== 'customizer') {
-                        exit;
+                        continue;
                     }
-
                     //$metaArr[0]['fields']
-
-                    $id = $panelName.$count;
-
-                    $wp_customize->add_section('sectionID'.$id, array(
-                      'title' => __($panelName, 'default'),
-                      'priority' => 30,
-                    ));
+                    $id = 'panelID'.$count;
+                    if ($count !== 0) {
+                        $wp_customize->add_section('secID'.$id, array(
+                        'title' => __($panelLabel, 'default'),
+                        'priority' => 30,
+                      ));
+                    }
                     // 2 levels or one
-                    foreach($metaArr as $panelFields){
-                      $twoLev = (count($panelFields) === 1 ? true : false) ;
-                      foreach ($panelFields['fields'] as $panel) {
-                          // $aBGeneral->showArr($panel);
-                        $fieldName = (isset($panel['name']) ? $panel['name'] : 'No Name');
+                    foreach ($metaArr as $panelFields) {
+                        $twoLev = (count($panelFields) === 1 ? true : false);
+                        foreach ($panelFields['fields'] as $panel) {
+                            // $aBGeneral->showArr($panel);
+                          $fieldName = (isset($panel['name']) ? $panel['name'] : 'No Name');
                           $fieldType = (isset($panel['type']) ? $panel['type'] : 'text');
                           $fieldLabel = (isset($panel['label']) ? $panel['label'] : 'No Label');
                           $fieldDescription = (isset($panel['description']) ? $panel['description'] : 'No Description');
 
                           //setting
-                          $wp_customize->add_setting($fieldName.$id, array(
+                          $wp_customize->add_setting('setID'.$id, array(
                             'default' => '',
                             'transport' => 'refresh',
                           ));
@@ -113,15 +108,15 @@ if (!class_exists('aBCustomizerClass')) {
                           case 'text':
                             $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
                             array('label' => __($fieldLabel, 'default'),
-                              'section' => 'sectionID'.$id,
-                              'settings' => $fieldName.$id,
+                              'section' => 'secID'.$id,
+                              'settings' => 'setID'.$id,
                               'description' => $fieldDescription,
                             )));
                           break;
                           case 'color':
                             $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $fieldName,
                             array('label' => __($fieldLabel, 'default'),
-                              'section' => 'sectionID'.$id,
+                              'section' => 'secID'.$id,
                               'settings' => $fieldName.$id,
                               'description' => $fieldDescription,
                             )));
@@ -129,7 +124,7 @@ if (!class_exists('aBCustomizerClass')) {
                           case 'upload':
                             $wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize, $fieldName,
                             array('label' => __($fieldLabel, 'default'),
-                              'section' => 'sectionID'.$id,
+                              'section' => 'secID'.$id,
                               'settings' => $fieldName.$id,
                               'description' => $fieldDescription,
                             )));
@@ -137,7 +132,7 @@ if (!class_exists('aBCustomizerClass')) {
                           case 'textarea':
                             $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
                             array('label' => __($fieldLabel, 'default'),
-                              'section' => 'sectionID'.$id,
+                              'section' => 'secID'.$id,
                               'settings' => $fieldName.$id,
                               'type' => 'textarea',
                               'description' => $fieldDescription,
@@ -146,7 +141,7 @@ if (!class_exists('aBCustomizerClass')) {
                           case 'dropdown-pages':
                             $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
                             array('label' => __($fieldLabel, 'default'),
-                              'section' => 'sectionID'.$id,
+                              'section' => 'secID'.$id,
                               'settings' => $fieldName.$id,
                               'type' => 'dropdown-pages',
                               'description' => $fieldDescription,
@@ -174,9 +169,9 @@ if (!class_exists('aBCustomizerClass')) {
                           //   )));
                           // break;
                         }
-                      }
+                        }
                     }
-
+                    ++$count;
                 }
             }
         }
