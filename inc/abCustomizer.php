@@ -80,13 +80,11 @@ if (!class_exists('aBCustomizerClass')) {
                         continue;
                     }
                     //$metaArr[0]['fields']
-                    $id = 'panelID'.$count;
-                    if ($count !== 0) {
+                    $id = 'panelID'.$panelName.$count;
                         $wp_customize->add_section('secID'.$id, array(
                         'title' => __($panelLabel, 'default'),
                         'priority' => 30,
                       ));
-                    }
                     // 2 levels or one
                     foreach ($metaArr as $panelFields) {
                         $twoLev = (count($panelFields) === 1 ? true : false);
@@ -117,7 +115,7 @@ if (!class_exists('aBCustomizerClass')) {
                             $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $fieldName,
                             array('label' => __($fieldLabel, 'default'),
                               'section' => 'secID'.$id,
-                              'settings' => $fieldName.$id,
+                              'settings' => 'setID'.$id,
                               'description' => $fieldDescription,
                             )));
                           break;
@@ -125,7 +123,7 @@ if (!class_exists('aBCustomizerClass')) {
                             $wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize, $fieldName,
                             array('label' => __($fieldLabel, 'default'),
                               'section' => 'secID'.$id,
-                              'settings' => $fieldName.$id,
+                              'settings' => 'setID'.$id,
                               'description' => $fieldDescription,
                             )));
                           break;
@@ -133,7 +131,7 @@ if (!class_exists('aBCustomizerClass')) {
                             $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
                             array('label' => __($fieldLabel, 'default'),
                               'section' => 'secID'.$id,
-                              'settings' => $fieldName.$id,
+                              'settings' => 'setID'.$id,
                               'type' => 'textarea',
                               'description' => $fieldDescription,
                             )));
@@ -142,7 +140,7 @@ if (!class_exists('aBCustomizerClass')) {
                             $wp_customize->add_control(new WP_Customize_Control($wp_customize, $fieldName,
                             array('label' => __($fieldLabel, 'default'),
                               'section' => 'secID'.$id,
-                              'settings' => $fieldName.$id,
+                              'settings' => 'setID'.$id,
                               'type' => 'dropdown-pages',
                               'description' => $fieldDescription,
                             )));
