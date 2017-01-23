@@ -1,6 +1,6 @@
 === Admin Builder ===
 Contributors: rootabout
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
+Donate link: 
 Tags: meta, fields, auto, easy, fast, develop, developers, RAD, build, code, unlimited, service, field
 Requires at least: 4.0
 Tested up to: 4.6
